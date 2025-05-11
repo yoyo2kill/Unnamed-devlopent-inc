@@ -6,9 +6,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vr3uu"]
 size = Vector2(122, 125)
 
-[node name="player" type="CharacterBody2D"]
-collision_layer = 2
-collision_mask = 3
+[node name="CharacterBody2D" type="CharacterBody2D"]
+collision_layer = 6
+collision_mask = 7
 script = ExtResource("1_608sh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
