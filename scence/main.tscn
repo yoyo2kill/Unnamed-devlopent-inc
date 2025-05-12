@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=4 uid="uid://vc6lmjo2smpw"]
+[gd_scene load_steps=8 format=4 uid="uid://vc6lmjo2smpw"]
 
 [ext_resource type="Texture2D" uid="uid://dmuqywifmj8ik" path="res://Assets/brackeys_platformer_assets/sprites/world_tileset.png" id="1_7538n"]
 [ext_resource type="PackedScene" uid="uid://o8wcs6qgym68" path="res://scence/player.tscn" id="1_tt04m"]
 [ext_resource type="PackedScene" uid="uid://n1gdfyptt3xx" path="res://scence/enemy.tscn" id="3_7essg"]
+[ext_resource type="PackedScene" uid="uid://ccs8o3umvamt3" path="res://scence/mana bar.tscn" id="3_pqvm3"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_7538n"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -158,6 +159,14 @@ position = Vector2(72, 28)
 scale = Vector2(0.5, 0.5)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+
+[node name="TextureProgressBar" parent="CharacterBody2D" instance=ExtResource("3_pqvm3")]
+offset_left = -1116.0
+offset_top = -612.0
+offset_right = -687.0
+offset_bottom = -554.0
+max_value = 500.0
+value = 0.0
 
 [node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_7essg")]
 position = Vector2(-152, 26)
