@@ -4,6 +4,9 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
+@onready var  FIREBALL = preload("res://scence/fireball.tscn")
+@onready var texture_progress_bar: TextureProgressBar = $TextureProgressBar
+
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -22,7 +25,22 @@ func _physics_process(delta: float) -> void:
 		velocity.y = updown * SPEED
 	else:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
-
-
-
+	
 	move_and_slide()
+
+#yotam is gay
+
+func _input(event: InputEvent) -> void:
+	if texture_progress_bar.value >= 100:
+		if event.is_action_pressed("spell1"):
+			texture_progress_bar.value -= 100
+			shoot()
+
+func shoot():
+	var fireball = FIREBALL.instantiate()
+	
+	fireball.position = position
+	fireball.fireball_dir = (position - get_global_mouse_position()).normalized()
+	get_parent().add_child(fireball)
+	
+	
