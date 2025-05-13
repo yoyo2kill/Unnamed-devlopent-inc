@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bqn31fmn8oyi3"]
-
-[ext_resource type="Script" uid="uid://uaglgwk24gfb" path="res://scence/Laser.gd" id="1_buws3"]
-
-[node name="laser" type="Node2D"]
-script = ExtResource("1_buws3")
-
-[node name="beam" type="Line2D" parent="."]
-points = PackedVector2Array(0, 0, 500, 0, 545, 70)
