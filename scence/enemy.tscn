@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://6windao8pnav" path="res://Scrpit/enemy.gd" id="1_355ya"]
 [ext_resource type="Texture2D" uid="uid://djbxfm3lrid5o" path="res://icon.svg" id="2_0p8j0"]
-[ext_resource type="Script" uid="uid://cytbaoaxrnmcx" path="res://KillboxEnemy.gd" id="3_0p8j0"]
+[ext_resource type="Script" uid="uid://cytbaoaxrnmcx" path="res://Scrpit/KillboxEnemy.gd" id="3_0p8j0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_355ya"]
 radius = 56.0357

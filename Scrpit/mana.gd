@@ -1,14 +1,15 @@
 extends TextureProgressBar
 
+var mana = value
 
 
 func _process(delta: float) -> void:
-	if value <= 500:
-		value += 1+delta
+	if mana <= 500:
+		mana += 1+delta
 
 func _input(event: InputEvent) -> void:
-	if value >= 100:
+	if mana >= 100:
 		if event.is_action_pressed("spell1"):
-			value -= 100
+			mana -= 100
 	else:
 		print("no work")

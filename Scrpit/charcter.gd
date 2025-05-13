@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@onready var laser: Node2D = $laser
+@onready var texture_progress_bar: TextureProgressBar = $TextureProgressBar
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -26,3 +28,9 @@ func _physics_process(delta: float) -> void:
 
 
 	move_and_slide()
+	
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("spell1"):
+			laser.activate()
+	else:
+		laser.deactivate()
