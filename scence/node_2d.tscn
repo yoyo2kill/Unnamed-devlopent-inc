@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://b6htl5t62dsf"]
+[gd_scene load_steps=7 format=3 uid="uid://c5nuicpjeh0n1"]
 
 [ext_resource type="PackedScene" uid="uid://vbe7wm6in45i" path="res://scence/tile_map_layer.tscn" id="1_r65ri"]
 [ext_resource type="PackedScene" uid="uid://o8wcs6qgym68" path="res://scence/player.tscn" id="2_lpjcr"]
 [ext_resource type="PackedScene" uid="uid://ccs8o3umvamt3" path="res://scence/mana bar.tscn" id="3_xw1vj"]
 [ext_resource type="PackedScene" uid="uid://n1gdfyptt3xx" path="res://scence/enemy.tscn" id="4_tc2ms"]
 [ext_resource type="PackedScene" uid="uid://duf7pafqgm6jm" path="res://scence/door.tscn" id="5_ed7tm"]
+[ext_resource type="Script" uid="uid://coc8e1n0ktnga" path="res://scence/door2.gd" id="6_lpjcr"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -30,5 +31,6 @@ scale = Vector2(0.5, 0.5)
 player = NodePath("../CharacterBody2D")
 
 [node name="Area2D" parent="." instance=ExtResource("5_ed7tm")]
-position = Vector2(-104, 20)
+position = Vector2(-523, -406)
 scale = Vector2(3, 3)
+script = ExtResource("6_lpjcr")

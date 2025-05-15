@@ -20,5 +20,5 @@ func _process(delta):
 		if Input.is_action_just_pressed("interact"):
 			print("Trying to change scene")
 		 
-			get_tree().change_scene_to_file("res://scence/node_2d.tscn")
+			get_tree().change_scene_to_file("res://scence/main.tscn")
 		   

@@ -28,7 +28,8 @@ value = 0.0
 position = Vector2(683, -144)
 scale = Vector2(0.5, 0.5)
 player = NodePath("../CharacterBody2D")
+fire_damge = 1.0
 
 [node name="Area2D" parent="." instance=ExtResource("5_qj2y4")]
-position = Vector2(-104, 20)
+position = Vector2(-499, -404)
 scale = Vector2(3, 3)
