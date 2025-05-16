@@ -1,6 +1,11 @@
 extends CharacterBody2D
 class_name Player
 
+
+@export var inv: Inv
+
+
+
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 const GRAVITY = 980  # Added gravity constant
@@ -41,3 +46,6 @@ func shoot():
 	# Fix direction calculation - this should point FROM player TO mouse
 	fireball.fireball_dir = (get_global_mouse_position() - position).normalized()
 	get_parent().add_child(fireball)
+
+func collect(item):
+	inv.insert(item)
