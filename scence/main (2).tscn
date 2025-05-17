@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctcx80etwbjm3"]
+
+[ext_resource type="Script" uid="uid://3sfdugy6vbp3" path="res://main.gd" id="1_n2581"]
+[ext_resource type="PackedScene" uid="uid://bdvupl28gv70r" path="res://heart.tscn" id="2_08l2y"]
+
+[node name="main" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_n2581")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 140.0
+offset_bottom = 52.0
+text = "+1"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 163.0
+offset_top = -1.0
+offset_right = 303.0
+offset_bottom = 51.0
+text = "-1"
+
+[node name="heart" parent="." instance=ExtResource("2_08l2y")]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 99.0
+offset_right = 1047.0
+offset_bottom = 299.0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
