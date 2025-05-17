@@ -1,23 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://n1gdfyptt3xx"]
+[gd_scene load_steps=6 format=3 uid="uid://n1gdfyptt3xx"]
 
 [ext_resource type="Script" uid="uid://6windao8pnav" path="res://Scrpit/enemy.gd" id="1_355ya"]
 [ext_resource type="Texture2D" uid="uid://djbxfm3lrid5o" path="res://icon.svg" id="2_0p8j0"]
-[ext_resource type="Script" path="res://Scrpit/KillboxEnemy.gd" id="3_0p8j0"]
-[ext_resource type="Script" uid="uid://dy0j7hueodkgu" path="res://Scrpit/hitbox.gd" id="4_pu7dk"]
-[ext_resource type="Texture2D" uid="uid://dfd0xvgbxvas8" path="res://Assets/Mana/black.png" id="5_4w8p1"]
-[ext_resource type="Texture2D" uid="uid://bt0ywbb1fx0sq" path="res://Assets/Mana/green.png" id="6_6ahrc"]
-[ext_resource type="Script" uid="uid://c4u2ih3na56yi" path="res://Scrpit/enemy health.gd" id="7_kkrda"]
-[ext_resource type="Texture2D" uid="uid://cdknt4dfa22xx" path="res://12344.png" id="8_nrubw"]
-[ext_resource type="Script" uid="uid://ddintlx20yoej" path="res://Scrpit/on_fire.gd" id="9_syyve"]
+[ext_resource type="Script" uid="uid://cytbaoaxrnmcx" path="res://scence/KillboxEnemy.gd" id="3_0p8j0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_355ya"]
 radius = 56.0357
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pu7dk"]
 size = Vector2(137, 136)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0p8j0"]
-size = Vector2(180, 182.667)
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 2
@@ -50,38 +41,6 @@ script = ExtResource("3_0p8j0")
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_pu7dk")
 
-[node name="Hitbox" type="Area2D" parent="."]
-scale = Vector2(3, 3)
-collision_layer = 2
-collision_mask = 2
-script = ExtResource("4_pu7dk")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(0.166667, 0.166666)
-scale = Vector2(0.25, 0.25)
-shape = SubResource("RectangleShape2D_0p8j0")
-
-[node name="EnemyHealth" type="TextureProgressBar" parent="."]
-offset_left = -85.0
-offset_top = -110.0
-offset_right = 344.0
-offset_bottom = -52.0
-scale = Vector2(0.4, 0.4)
-max_value = 200.0
-value = 200.0
-allow_greater = true
-allow_lesser = true
-texture_under = ExtResource("5_4w8p1")
-texture_progress = ExtResource("6_6ahrc")
-script = ExtResource("7_kkrda")
-
-[node name="12344" type="Sprite2D" parent="."]
-position = Vector2(-177.25, 0.124998)
-scale = Vector2(0.108929, 0.126019)
-texture = ExtResource("8_nrubw")
-script = ExtResource("9_syyve")
-
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
-[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
