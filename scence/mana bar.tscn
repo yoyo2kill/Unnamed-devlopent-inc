@@ -7,8 +7,8 @@
 [node name="TextureProgressBar" type="TextureProgressBar"]
 offset_right = 429.0
 offset_bottom = 58.0
-max_value = 10.0
-value = 10.0
+max_value = 1000.0
+value = 300.0
 texture_under = ExtResource("1_m1m3o")
 texture_progress = ExtResource("2_plgpp")
 script = ExtResource("3_3m3ks")
