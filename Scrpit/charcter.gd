@@ -1,7 +1,10 @@
 extends CharacterBody2D
 class_name Player
 
-
+var fill_cooldown = 3.0 # Cooldown in seconds for B key
+var fill_cooldown_timer = 0.0 # Current cooldown timer
+var fill_uses_remaining = 3 # Limited to 3 uses total
+var fill_on_cooldown = false # Track if filling is on cooldown
 @export var inv: Inv
 
 var on_freeze = false
@@ -47,6 +50,39 @@ func _input(event: InputEvent) -> void:
 			
 			
 			shoot_freeze()
+	if event.is_action_pressed("manapot") or (event is InputEventKey and event.keycode == KEY_B and event.pressed and not event.echo):
+		try_fill_bar()
+		
+func try_fill_bar():
+	# Calculate 3/4 threshold and 1/4 increment values
+		var three_quarter_value = texture_progress_bar.max_value * 0.75
+		var quarter_value = texture_progress_bar.max_value * 0.25
+	
+	# Check if progress bar is already at or above 75%
+		if texture_progress_bar.value >= three_quarter_value:
+			print("Progress bar already at or above 75%, not using a charge.")
+			return
+		
+	# Check if we have uses remaining and not on cooldown
+		if fill_uses_remaining > 0 and not fill_on_cooldown:
+		# Add 1/4 to the current value, capped at max_value
+			texture_progress_bar.value = min(texture_progress_bar.value + quarter_value, texture_progress_bar.max_value)
+		
+		# Reduce remaining uses
+			fill_uses_remaining -= 1
+		
+		# Start cooldown
+			fill_on_cooldown = true
+			fill_cooldown_timer = fill_cooldown
+		
+		# Print debug info
+			print("Added 1/4 to progress bar. Current value: ", texture_progress_bar.value, 
+		 	 " - Uses remaining: ", fill_uses_remaining,
+		 	" - On cooldown for: ", fill_cooldown, " seconds")
+		elif fill_uses_remaining <= 0:
+			print("No progress bar fill uses remaining!")
+		elif fill_on_cooldown:
+			print("Progress bar fill on cooldown! Ready in: ", fill_cooldown_timer, " seconds")
 
 func shoot():
 	var fireball = FIREBALL.instantiate()
