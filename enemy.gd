@@ -1,5 +1,5 @@
 extends CharacterBody2D
-class_name enemy_1
+class_name enemy
 var time_remaining
 var on_fire = false
 var fire_damage = 1  # Damage per second
