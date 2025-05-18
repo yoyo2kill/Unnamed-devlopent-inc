@@ -4,13 +4,11 @@ class_name Player
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 const GRAVITY = 980  # Added gravity constant
-
 # Progress bar fill variables
 var fill_cooldown = 3.0 # Cooldown in seconds for B key
 var fill_cooldown_timer = 0.0 # Current cooldown timer
 var fill_uses_remaining = 3 # Limited to 3 uses total
 var fill_on_cooldown = false # Track if filling is on cooldown
-
 @onready var FIREBALL = preload("res://scence/fireball.tscn")
 @onready var FREEZE = preload("res://scence/freeze.tscn")  # Preload the freeze scene
 @onready var texture_progress_bar: TextureProgressBar = $TextureProgressBar
@@ -57,11 +55,17 @@ func _input(event: InputEvent) -> void:
 		try_fill_bar()
 		
 func try_fill_bar():
+	# Calculate 3/4 threshold and 1/4 increment values
+	var three_quarter_value = texture_progress_bar.max_value * 0.75
+	var quarter_value = texture_progress_bar.max_value * 0.25
+	
+	# Check if progress bar is already at or above 75%
+	if texture_progress_bar.value >= three_quarter_value:
+		print("Progress bar already at or above 75%, not using a charge.")
+		return
+		
 	# Check if we have uses remaining and not on cooldown
 	if fill_uses_remaining > 0 and not fill_on_cooldown:
-		# Calculate 1/4 of the max value of the progress bar
-		var quarter_value = texture_progress_bar.max_value / 4
-		
 		# Add 1/4 to the current value, capped at max_value
 		texture_progress_bar.value = min(texture_progress_bar.value + quarter_value, texture_progress_bar.max_value)
 		
