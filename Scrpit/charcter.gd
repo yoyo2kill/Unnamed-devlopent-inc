@@ -34,7 +34,7 @@ func _input(event: InputEvent) -> void:
 			texture_progress_bar.value -= 100
 			shoot_fireball()
 		elif event.is_action_pressed("spell2"):  # Add new input for freeze spell
-			texture_progress_bar.value -= 125  # Freeze costs less (75 instead of 100)
+			texture_progress_bar.value -= 200  # Freeze costs less (75 instead of 100)
 			shoot_freeze()
 
 func shoot_fireball():

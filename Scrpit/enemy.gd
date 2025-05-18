@@ -49,7 +49,7 @@ func process_freeze(delta):
 			on_fire = false
 			freeze_timer = 0.0
 		else:
-			enemy_health.value -= 1.0
+			enemy_health.value -= 0.5
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area is Fireball:
 		on_fire = true
@@ -58,7 +58,7 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area is Freeze:
 		on_freeze = true
 		freeze_timer = 0.0
-		enemy_health.value -= 10
+		enemy_health.value -= 20
 		speed = 100
 		
 func _on_coldown_timer_timeout() -> void:
