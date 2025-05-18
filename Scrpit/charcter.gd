@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+class_name player
 
 
 @export var inv: Inv
@@ -29,6 +29,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 move_and_slide()
 
+<<<<<<< Updated upstream
 func _input(event: InputEvent) -> void:
 	if texture_progress_bar.value >= 100:
 		if event.is_action_pressed("spell1"):
@@ -45,3 +46,6 @@ func shoot():
 
 func collect(item):
 	inv.insert(item)
+=======
+	move_and_slide()
+>>>>>>> Stashed changes

@@ -29,7 +29,7 @@ shape = SubResource("CircleShape2D_355ya")
 debug_enabled = true
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.02
+wait_time = 0.1
 autostart = true
 
 [node name="Area2D" type="Area2D" parent="."]
