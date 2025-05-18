@@ -6,26 +6,30 @@ var fire_damage = 1  # Damage per second
 var fire_duration = 1.0  # Total duration in seconds
 var fire_timer = 0.0  # Current timer
 
-const speed = 200
-
+const SPEED = 200
+@export var detection_radius = 500.0
+@export var shooting_distance = 200.0
 @export var player: Node2D
 @onready var nav_agent := $NavigationAgent2D as NavigationAgent2D
 @onready var enemy_health: TextureProgressBar = $EnemyHealth
 @export var fire_damge: float
+var on_freeze = false
+var freeze_damage = 0.2  # Damage per second
+var freeze_duration = 1.0  # Total duration in seconds
+var freeze_timer = 2 
+var speed = 200
 func _process(delta):
 	process_fire(delta)
 	process_health_check(delta)
 
 func _physics_process(_delta: float) -> void:
-	var dir = to_local(nav_agent.get_next_path_position()).normalized()
-	velocity = dir * speed
+	var distance_to_player = global_position.distance_to(player.global_position)
+	if distance_to_player <= detection_radius:
+		var direction = (player.global_position - global_position).normalized()
+		velocity = direction * SPEED
 	move_and_slide()
-	
-func makepath() -> void:
-	nav_agent.target_position = player.global_position
 
-func _on_timer_timeout():
-	makepath()
+
 
 func process_fire(delta):
 	if on_fire:
@@ -41,6 +45,11 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		on_fire = true
 		fire_timer = 0.0
 		enemy_health.value -= 20
+	if area is Freeze:
+		on_freeze = true
+		freeze_timer = 0.0
+		enemy_health.value -= 20
+		speed = 100
 
 func process_health_check(delta):
 	if enemy_health.value <= 0:

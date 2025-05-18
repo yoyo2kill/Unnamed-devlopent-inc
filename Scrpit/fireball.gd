@@ -3,7 +3,7 @@ class_name Fireball
 
 var ENEMY = preload("res://scence/enemy.tscn")
 var speed = 700
-var fireball_dir = Vector2.RIGHT  # Default direction if not set
+var fireball_dir
 
 func _ready():
 	# Connect the area_entered signal if not connected in the editor

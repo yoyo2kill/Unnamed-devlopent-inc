@@ -49,7 +49,6 @@ func dash():
 	SPEED = 1000
 	is_ready = false
 	coldown_timer.start()
-
 var is_ready = true
 
 

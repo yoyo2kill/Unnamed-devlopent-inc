@@ -50,7 +50,6 @@ func _input(event: InputEvent) -> void:
 
 func shoot():
 	var fireball = FIREBALL.instantiate()
-	
 	fireball.position = position
 	# Fix direction calculation - this should point FROM player TO mouse
 	fireball.fireball_dir = (get_global_mouse_position() - position).normalized()
