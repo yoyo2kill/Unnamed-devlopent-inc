@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://cka4gkkkkvg7e"]
+
+[ext_resource type="Script" uid="uid://dqn4maoe2l5v8" path="res://inventory/inventroy_item.gd" id="1_4rivp"]
+[ext_resource type="Texture2D" uid="uid://dntbreyqvic27" path="res://Assets/brackeys_platformer_assets/sprites/mana potion.png" id="2_oumwm"]
+
+[resource]
+script = ExtResource("1_4rivp")
+name = "mana potion"
+texture = ExtResource("2_oumwm")
+metadata/_custom_type_script = "uid://dqn4maoe2l5v8"

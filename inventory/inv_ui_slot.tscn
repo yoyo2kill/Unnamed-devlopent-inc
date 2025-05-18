@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://dww4w7kjvu8dd"]
+
+[ext_resource type="Texture2D" uid="uid://bvgiwpysjmhsh" path="res://Assets/inventory_assets/Tile.png" id="1_dfngl"]
+[ext_resource type="Script" uid="uid://7y04v8ygavdq" path="res://inventory/inv_ui_slot.gd" id="1_fcwim"]
+
+[node name="inv_UI_slot" type="Panel"]
+custom_minimum_size = Vector2(32, 32)
+offset_right = 32.0
+offset_bottom = 32.0
+script = ExtResource("1_fcwim")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_dfngl")
+centered = false
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="item_display" type="Sprite2D" parent="CenterContainer/Panel"]

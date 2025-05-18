@@ -2,7 +2,16 @@
 
 [ext_resource type="Script" uid="uid://6windao8pnav" path="res://Scrpit/enemy.gd" id="1_355ya"]
 [ext_resource type="Texture2D" uid="uid://djbxfm3lrid5o" path="res://icon.svg" id="2_0p8j0"]
+
+[ext_resource type="Script" uid="uid://cytbaoaxrnmcx" path="res://Scrpit/KillboxEnemy.gd" id="3_0p8j0"]
+[ext_resource type="Script" uid="uid://dy0j7hueodkgu" path="res://Scrpit/hitbox.gd" id="4_pu7dk"]
+[ext_resource type="Texture2D" uid="uid://dfd0xvgbxvas8" path="res://Assets/Mana/black.png" id="5_4w8p1"]
+[ext_resource type="Texture2D" uid="uid://bt0ywbb1fx0sq" path="res://Assets/Mana/green.png" id="6_6ahrc"]
+[ext_resource type="Script" uid="uid://c4u2ih3na56yi" path="res://Scrpit/enemy health.gd" id="7_kkrda"]
+[ext_resource type="Texture2D" uid="uid://cdknt4dfa22xx" path="res://12344.png" id="8_nrubw"]
+[ext_resource type="Script" uid="uid://ddintlx20yoej" path="res://Scrpit/on_fire.gd" id="9_syyve"]
 [ext_resource type="Script" uid="uid://cytbaoaxrnmcx" path="res://scence/KillboxEnemy.gd" id="3_0p8j0"]
+
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_355ya"]
 radius = 56.0357

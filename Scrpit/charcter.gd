@@ -1,6 +1,11 @@
 extends CharacterBody2D
 
 
+
+@export var inv: Inv
+
+
+
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
@@ -22,7 +27,21 @@ func _physics_process(delta: float) -> void:
 		velocity.y = updown * SPEED
 	else:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
+move_and_slide()
 
+func _input(event: InputEvent) -> void:
+	if texture_progress_bar.value >= 100:
+		if event.is_action_pressed("spell1"):
+			texture_progress_bar.value -= 100
+			shoot()
 
+func shoot():
+	var fireball = FIREBALL.instantiate()
+	
+	fireball.position = position
+	# Fix direction calculation - this should point FROM player TO mouse
+	fireball.fireball_dir = (get_global_mouse_position() - position).normalized()
+	get_parent().add_child(fireball)
 
-	move_and_slide()
+func collect(item):
+	inv.insert(item)

@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwekoh5ifswvh"]
+
+[ext_resource type="Texture2D" uid="uid://dntbreyqvic27" path="res://Assets/brackeys_platformer_assets/sprites/mana potion.png" id="1_qp6uf"]
+[ext_resource type="Script" uid="uid://10mwd32gvw8n" path="res://mana_potion.gd" id="2_ejbfw"]
+[ext_resource type="Resource" uid="uid://cka4gkkkkvg7e" path="res://inventory/items/mana potion.tres" id="3_ejbfw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_474gc"]
+radius = 8.34
+
+[node name="Sprite2D" type="Sprite2D"]
+scale = Vector2(3, 3)
+texture = ExtResource("1_qp6uf")
+script = ExtResource("2_ejbfw")
+item = ExtResource("3_ejbfw")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_474gc")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
