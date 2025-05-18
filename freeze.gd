@@ -3,7 +3,7 @@ class_name Freeze
 
 var ENEMY = preload("res://scence/enemy.tscn")
 var speed = 700
-var Freeze_dir = Vector2.RIGHT  # Default direction if not set
+var freeze_dir = Vector2.RIGHT  # Default direction if not set
 
 func _ready():
 	# Connect the area_entered signal if not connected in the editor
@@ -12,7 +12,7 @@ func _ready():
 
 func _process(delta):
 	# Move the fireball
-	position +=  Freeze_dir * speed * delta
+	position +=  freeze_dir * speed * delta
 
 # This is called when the fireball enters another area
 func _on_area_entered(area):

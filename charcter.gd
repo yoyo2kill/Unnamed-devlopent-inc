@@ -7,6 +7,7 @@ const JUMP_VELOCITY = -400.0
 const GRAVITY = 980  # Added gravity constant
 @onready var FIREBALL = preload("res://scence/fireball.tscn")
 @onready var texture_progress_bar: TextureProgressBar = $TextureProgressBar
+@onready var FREEZE = preload("res://scence/freeze.tscn")  # Preload the freeze scene
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -31,6 +32,9 @@ func _input(event: InputEvent) -> void:
 		if event.is_action_pressed("spell1"):
 			texture_progress_bar.value -= 100
 			shoot()
+	if texture_progress_bar.value >= 200:
+		if event.is_action_pressed("spell2"):
+			shoot_freeze()
 
 	if event.is_action_pressed("ui_select") and is_ready:
 		dash()
@@ -41,9 +45,13 @@ func shoot():
 	# Fix direction calculation - this should point FROM player TO mouse
 	fireball.fireball_dir = (get_global_mouse_position() - position).normalized()
 	get_parent().add_child(fireball)
-func collect(item):
-	inv.insert(item)
-
+func shoot_freeze():
+	var freeze = FREEZE.instantiate()
+	
+	freeze.position = position
+	# Same direction calculation as fireball
+	freeze.freeze_dir = (get_global_mouse_position() - position).normalized()
+	get_parent().add_child(freeze)
 func dash():
 	$Timer.start()
 	SPEED = 1000
