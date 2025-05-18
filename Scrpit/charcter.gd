@@ -4,8 +4,11 @@ class_name Player
 
 @export var inv: Inv
 
-
-
+var on_freeze = false
+var freeze_damage = 0.2  # Damage per second
+var freeze_duration = 1.0  # Total duration in seconds
+var freeze_timer = 2 
+@onready var FREEZE = preload("res://scence/freeze.tscn")  # Preload the freeze scene
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 const GRAVITY = 980  # Added gravity constant
@@ -38,6 +41,12 @@ func _input(event: InputEvent) -> void:
 		if event.is_action_pressed("spell1"):
 			texture_progress_bar.value -= 100
 			shoot()
+	if texture_progress_bar.value >= 200:
+		if event.is_action_pressed("spell2"):  # Add new input for freeze spell
+			texture_progress_bar.value -= 200  # Freeze costs less (75 instead of 100)
+			
+			
+			shoot_freeze()
 
 func shoot():
 	var fireball = FIREBALL.instantiate()
@@ -46,6 +55,9 @@ func shoot():
 	# Fix direction calculation - this should point FROM player TO mouse
 	fireball.fireball_dir = (get_global_mouse_position() - position).normalized()
 	get_parent().add_child(fireball)
-
-func collect(item):
-	inv.insert(item)
+func shoot_freeze():
+	var freeze = FREEZE.instantiate()
+	freeze.position = position
+	# Same direction calculation as fireball
+	freeze.Freeze_dir = (get_global_mouse_position() - position).normalized()
+	get_parent().add_child(freeze)

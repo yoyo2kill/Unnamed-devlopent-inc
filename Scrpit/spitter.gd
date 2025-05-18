@@ -1,8 +1,8 @@
 extends CharacterBody2D
 @onready var enemy_health: TextureProgressBar = $EnemyHealth
 # Enemy properties
-@export var speed = 50.0
-@export var health = 3
+@export var SPEED = 50.0
+
 @export var detection_radius = 300.0
 @export var shooting_distance = 200.0
 @export var bullet_speed = 200.0
@@ -13,7 +13,11 @@ var fire_duration = 1.0  # Total duration in seconds
 var fire_timer = 0.0  # Current timer
 # Bullet scene - you need to create a bullet scene and assign it here
 @export var bullet_scene: PackedScene
-
+var on_freeze = false
+var freeze_damage = 0.2  # Damage per second
+var freeze_duration = 1.0  # Total duration in seconds
+var freeze_timer = 2 
+var speed = 200
 # References
 var player = null
 var can_shoot = true
@@ -43,7 +47,7 @@ func _physics_process(delta):
 		# Move towards player if too far to shoot
 		if distance_to_player > shooting_distance:
 			var direction = (player.global_position - global_position).normalized()
-			velocity = direction * speed
+			velocity = direction * SPEED
 		else:
 			# Stop moving when in shooting range
 			velocity = Vector2.ZERO
@@ -107,6 +111,11 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		on_fire = true
 		fire_timer = 0.0
 		enemy_health.value -= 20
+	if area is Freeze:
+		on_freeze = true
+		freeze_timer = 0.0
+		enemy_health.value -= 20
+		speed = 100
 
 func process_health_check(delta):
 	if enemy_health.value <= 0:

@@ -50,5 +50,4 @@ func damage_player(amount):
 
 	# You can add game over logic here
 	if current_heart <= 0:
-		print("GAME OVER")
-		# Implement game over logic here
+		get_tree().change_scene_to_file("res://scence/game_over_screen.tscn")
