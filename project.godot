@@ -15,6 +15,11 @@ run/main_scene="res://scence/main.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[global_group]
+
+Enemies=""
+enemy_hitbox=""
+
 [input]
 
 ui_left={

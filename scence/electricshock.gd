@@ -1,5 +1,5 @@
 extends Area2D
-class_name fireball
+class_name Fireball
 
 var speed = 700
 var fireball_dir
