@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://cfchafbrsl88s"]
 
-[ext_resource type="Script" uid="uid://cpr8irgstk7o0" path="res://scence/duplicator.gd" id="1_574cd"]
+[ext_resource type="Script" path="res://scence/duplicator.gd" id="1_574cd"]
 [ext_resource type="Texture2D" uid="uid://djbxfm3lrid5o" path="res://icon.svg" id="2_jge6b"]
 [ext_resource type="Script" uid="uid://cytbaoaxrnmcx" path="res://Scrpit/KillboxEnemy.gd" id="3_hxd6y"]
 [ext_resource type="Script" uid="uid://dy0j7hueodkgu" path="res://Scrpit/hitbox.gd" id="4_jhrj4"]
