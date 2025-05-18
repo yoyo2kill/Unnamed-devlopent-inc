@@ -3,7 +3,6 @@ extends Node2D
 # Template enemies - you can add more template enemies as children of this node
 @onready var original_enemy = $Enemy
 @export var player: Node2D  # Add this export for player reference
-
 # Round configuration
 @export var max_rounds: int = 5
 var current_round: int = 0
@@ -12,7 +11,7 @@ var next_spawn_timer = null  # Timer for next spawn cycle
 
 # Round definitions - customize in the inspector
 # Arrays must have the same number of elements for each round
-@export var round_1_enemy_types: Array[String] = ["spitter"]  # First round only spawns basic enemies
+@export var round_1_enemy_types: Array[String] = ["Enemy_spitter"]  # First round only spawns basic enemies
 @export var round_1_enemy_counts: Array[int] = [3]          # Spawn 3 of them
 
 @export var round_2_enemy_types: Array[String] = ["Enemy"]
@@ -72,7 +71,7 @@ func check_for_all_enemies_dead():
 		print("All enemies eliminated. Starting next round...")
 		next_spawn_timer.queue_free()
 		next_spawn_timer = null
-		start_next_round()
+		$"Wave timer".start()
 
 func enemy_died():
 	active_enemies -= 1
@@ -83,7 +82,9 @@ func enemy_died():
 		print("All enemies eliminated. Starting next round...")
 		next_spawn_timer.queue_free()
 		next_spawn_timer = null
-		start_next_round()
+		$"Wave timer".start()
+
+
 
 func queue_next_round():
 	# Only create a new timer if one doesn't exist already
@@ -95,7 +96,7 @@ func queue_next_round():
 		add_child(next_spawn_timer)
 		next_spawn_timer.timeout.connect(func(): 
 			if active_enemies <= 0:
-				start_next_round()
+				$"Wave timer".start()
 				next_spawn_timer = null
 			# Otherwise the check_for_all_enemies_dead function will handle it
 		)
@@ -225,3 +226,7 @@ func spawn_enemy(template_enemy):
 	# Initialize path to player if the function exists
 	if new_enemy.has_method("make_path"):
 		new_enemy.make_path()
+
+
+func _on_wave_timer_timeout() -> void:
+	start_next_round()

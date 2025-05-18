@@ -82,9 +82,6 @@ offset_bottom = 39.0
 theme_override_font_sizes/font_size = 25
 text = "Wave 1"
 
-[node name="Panel cool" type="Timer" parent="CharacterBody2D/Camera2D/Panel2"]
-wait_time = 10.0
-
 [node name="HealthController" parent="CharacterBody2D" groups=["health_controller"] instance=ExtResource("6_qj2y4")]
 offset_left = -12.0
 offset_top = 89.0
@@ -109,8 +106,8 @@ one_shot = true
 [node name="WaveSpawner" type="Node2D" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("9_bk32q")
 player = NodePath("../CharacterBody2D")
-round_1_enemy_types = Array[String](["Enemy_spitter", "Enemy"])
-round_1_enemy_counts = Array[int]([2, 1])
+round_1_enemy_types = Array[String](["3"])
+round_1_enemy_counts = Array[int]([5])
 
 [node name="Enemy" parent="WaveSpawner" node_paths=PackedStringArray("player") instance=ExtResource("3_7essg")]
 position = Vector2(171824, -79007)
@@ -120,13 +117,8 @@ player = NodePath("../../CharacterBody2D")
 [node name="Enemy_spitter" parent="WaveSpawner" instance=ExtResource("10_bk32q")]
 position = Vector2(-879704, 22310)
 
-[node name="Enemy_Duplicator" parent="WaveSpawner" node_paths=PackedStringArray("player") instance=ExtResource("9_4rajj")]
+[node name="Enemy_Duplicator" parent="WaveSpawner" instance=ExtResource("9_4rajj")]
 position = Vector2(-2.68307e+06, -6276)
-player = NodePath("../../CharacterBody2D")
-
-[node name="Wave timer" type="Timer" parent="WaveSpawner"]
-wait_time = 10.0
-one_shot = true
 
 [node name="Node" type="Node" parent="."]
 
@@ -280,8 +272,5 @@ offset_right = 5487.0
 offset_bottom = 5041.0
 color = Color(0, 0, 0, 1)
 
-[connection signal="timeout" from="CharacterBody2D/Camera2D/Panel2/Panel cool" to="CharacterBody2D/Camera2D/Panel2" method="_on_panel_cool_timeout"]
 [connection signal="timeout" from="CharacterBody2D/Timer2" to="CharacterBody2D" method="_on_timer_timeout"]
 [connection signal="timeout" from="CharacterBody2D/coldown timer2" to="CharacterBody2D" method="_on_coldown_timer_timeout"]
-[connection signal="timeout" from="WaveSpawner/Wave timer" to="CharacterBody2D/Camera2D/Panel2" method="_on_wave_timer_timeout"]
-[connection signal="timeout" from="WaveSpawner/Wave timer" to="WaveSpawner" method="_on_wave_timer_timeout"]

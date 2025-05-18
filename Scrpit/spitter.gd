@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name spitter
 @onready var enemy_health: TextureProgressBar = $EnemyHealth
 # Enemy properties
 @export var SPEED = 50.0
