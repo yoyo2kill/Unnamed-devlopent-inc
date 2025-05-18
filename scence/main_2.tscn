@@ -15,7 +15,7 @@ scale = Vector2(0.5, 0.5)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 
-[node name="TextureProgressBar" parent="CharacterBody2D" instance=ExtResource("3_hgu7e")]
+[node name="TextureProgressBar2" parent="CharacterBody2D" instance=ExtResource("3_hgu7e")]
 offset_left = -1106.0
 offset_top = -538.0
 offset_right = -677.0
