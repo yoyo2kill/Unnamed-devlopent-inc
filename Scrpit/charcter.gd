@@ -1,15 +1,11 @@
 extends CharacterBody2D
 class_name Player
-
-
+@onready var coldown_timer = $"coldown timer"
 @export var inv: Inv
-
-
-
-const SPEED = 300.0
+var dash_timer = 2
+var SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 const GRAVITY = 980  # Added gravity constant
-
 @onready var FIREBALL = preload("res://scence/fireball.tscn")
 @onready var texture_progress_bar: TextureProgressBar = $TextureProgressBar
 
@@ -38,6 +34,9 @@ func _input(event: InputEvent) -> void:
 		if event.is_action_pressed("spell1"):
 			texture_progress_bar.value -= 100
 			shoot()
+	
+	if event.is_action_pressed("ui_select") and is_ready:
+		dash()
 
 func shoot():
 	var fireball = FIREBALL.instantiate()
@@ -49,3 +48,28 @@ func shoot():
 
 func collect(item):
 	inv.insert(item)
+	
+func dash():
+	# Start the dash speed timer
+	$Timer.start()
+	
+	# Set speed to dash speed
+	SPEED = 1000
+	
+	# Start cooldown
+	is_ready = false
+	coldown_timer.start()
+
+func _on_timer_timeout() -> void:
+	# Return to normal speed when dash duration ends
+	SPEED = 300
+
+var is_ready: bool = true
+
+func _process(delta):
+	# No need to check for input here as it's handled in _input()
+	pass
+		
+func _on_coldown_timer_timeout() -> void:
+	# When cooldown timer finishes, allow dashing again
+	is_ready = true
