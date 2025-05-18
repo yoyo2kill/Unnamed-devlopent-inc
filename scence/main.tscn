@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://vc6lmjo2smpw"]
 
+[gd_scene load_steps=13 format=3 uid="uid://vc6lmjo2smpw"]
 [ext_resource type="PackedScene" uid="uid://o8wcs6qgym68" path="res://scence/player.tscn" id="1_tt04m"]
 [ext_resource type="PackedScene" uid="uid://n1gdfyptt3xx" path="res://scence/enemy.tscn" id="3_7essg"]
 [ext_resource type="Script" uid="uid://cexv8h5jjb4mr" path="res://Scrpit/panel.gd" id="3_qj2y4"]
 [ext_resource type="Script" uid="uid://c52qr1v42tdkw" path="res://Scrpit/panel_2.gd" id="4_47hqa"]
 [ext_resource type="PackedScene" uid="uid://duf7pafqgm6jm" path="res://scence/door.tscn" id="5_qj2y4"]
+
 [ext_resource type="PackedScene" uid="uid://crt0i8ojonq0r" path="res://control.tscn" id="6_qj2y4"]
 [ext_resource type="PackedScene" uid="uid://bdvupl28gv70r" path="res://heart.tscn" id="6_sr2ul"]
 [ext_resource type="Script" uid="uid://bgxpjvaqluy6t" path="res://Scrpit/spawner.gd" id="9_bk32q"]
@@ -18,6 +19,10 @@ size = Vector2(117, 404)
 size = Vector2(4083, 87.5)
 
 [node name="Node2D" type="Node2D"]
+[ext_resource type="PackedScene" uid="uid://dcg8yrn3r4ujs" path="res://scence/enemy2.tscn" id="8_nmbla"]
+
+[node name="Node2D" type="Node2D"]
+
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_tt04m")]
 position = Vector2(35, -153)
@@ -76,6 +81,7 @@ offset_bottom = 39.0
 theme_override_font_sizes/font_size = 25
 text = "Wave 1"
 
+
 [node name="HealthController" parent="CharacterBody2D" groups=["health_controller"] instance=ExtResource("6_qj2y4")]
 offset_left = -12.0
 offset_top = 89.0
@@ -96,6 +102,7 @@ one_shot = true
 
 [node name="coldown timer2" type="Timer" parent="CharacterBody2D"]
 one_shot = true
+
 
 [node name="Area2D" parent="." instance=ExtResource("5_qj2y4")]
 position = Vector2(-499, -404)
@@ -274,3 +281,8 @@ color = Color(0, 0, 0, 1)
 
 [connection signal="timeout" from="CharacterBody2D/Timer2" to="CharacterBody2D" method="_on_timer_timeout"]
 [connection signal="timeout" from="CharacterBody2D/coldown timer2" to="CharacterBody2D" method="_on_coldown_timer_timeout"]
+[node name="Enemy2" parent="WaveSpawner" node_paths=PackedStringArray("player") instance=ExtResource("8_nmbla")]
+position = Vector2(1231, 170)
+player = NodePath("../../CharacterBody2D")
+fire_damge = 1.0
+

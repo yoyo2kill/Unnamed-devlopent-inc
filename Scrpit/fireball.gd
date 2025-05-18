@@ -1,7 +1,6 @@
 extends Area2D
-class_name Fireball
+class_name fireball
 
-var ENEMY = preload("res://scence/enemy.tscn")
 var speed = 700
 var fireball_dir
 

@@ -2,49 +2,57 @@ extends Node2D
 
 @onready var original_enemy = $Enemy
 @export var player: Node2D  # Add this export for player reference
-@export var num_enemies_to_spawn: int = 0
+@export var num_enemies_to_spawn: int = 10
 
 func _ready():
 	# Print debug info to help diagnose issues
 	print("Spawner initialized")
 	print("Original enemy valid: ", is_instance_valid(original_enemy))
 	print("Player valid: ", is_instance_valid(player))
-	
+
 	# Keep the original enemy as a template but hide it
 	if is_instance_valid(original_enemy):
 		original_enemy.visible = false
-		print("Original enemy hidden and ready as template")
-	
-	# Start the repeating spawn cycle
-	start_spawn_cycle()
+		print("Original enemy hidden and ready")
+
+	# Start the initial spawn delay timer
+	var initial_delay_timer = Timer.new()
+	initial_delay_timer.name = "InitialSpawnDelay"
+	initial_delay_timer.wait_time = 5.0
+	initial_delay_timer.one_shot = true
+	add_child(initial_delay_timer)
+	initial_delay_timer.timeout.connect(start_spawn_cycle)
+	initial_delay_timer.start()
+	print("Initial enemy spawn will occur in 5 seconds.")
 
 func start_spawn_cycle():
 	# Spawn the batch of enemies
 	spawn_enemies()
-	
-	# Set up the timer to repeat the cycle after 300 seconds
+
+	# Set up the timer to repeat the cycle after 60 seconds (as it was before)
 	var spawn_timer = Timer.new()
 	spawn_timer.name = "SpawnTimer"
-	spawn_timer.wait_time = 10.0
+	spawn_timer.wait_time = 60.0
 	spawn_timer.one_shot = false
 	add_child(spawn_timer)
 	spawn_timer.timeout.connect(start_spawn_cycle)
 	spawn_timer.start()
+	print("Repeating enemy spawn cycle started every 60 seconds.")
 
 func spawn_enemies():
 	if is_instance_valid(original_enemy) and is_instance_valid(player):
 		print("Spawning", num_enemies_to_spawn, "enemies...")
-		
+
 		for i in range(num_enemies_to_spawn):
 			var new_enemy = original_enemy.duplicate()
 			new_enemy.visible = true
-			
+
 			# Set random position within viewport
 			new_enemy.position = Vector2(
-				randf_range(-500, get_viewport_rect().size.x), 
+				randf_range(-500, get_viewport_rect().size.x),
 				randf_range(-100, get_viewport_rect().size.y)
 			)
-			
+
 			# Make sure the new enemy has a NavigationAgent2D
 			var nav_agent
 			if new_enemy.has_node("NavigationAgent2D"):
@@ -55,7 +63,7 @@ func spawn_enemies():
 				nav_agent.name = "NavigationAgent2D"
 				new_enemy.add_child(nav_agent)
 				print("Added NavigationAgent2D to enemy")
-			
+
 			# Set up the timer for path updates if it doesn't exist
 			if not new_enemy.has_node("PathUpdateTimer"):
 				var timer = Timer.new()
@@ -63,25 +71,21 @@ func spawn_enemies():
 				timer.wait_time = 0.5  # Update path every half second
 				timer.autostart = true
 				new_enemy.add_child(timer)
-				
-				# Connect the timer to a path update function
-				# We need to ensure the enemy script has the correct methods
+
 				if new_enemy.has_method("_on_timer_timeout"):
 					timer.timeout.connect(new_enemy._on_timer_timeout)
 				print("Added PathUpdateTimer to enemy")
-			
+
 			# Set the player reference on the enemy
 			new_enemy.player = player
 			print("Set player reference on enemy")
-			
-			# Add to scene tree
+
 			add_child(new_enemy)
-			
-			# Initialize path to player if the function exists
+
 			if new_enemy.has_method("make_path"):
 				new_enemy.make_path()
 				print("Called make_path() on enemy")
-			
+
 		print("Successfully spawned", num_enemies_to_spawn, "enemies")
 	else:
 		printerr("Error: Original Enemy node not found or Player node not found!")

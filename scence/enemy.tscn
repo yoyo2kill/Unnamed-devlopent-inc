@@ -3,6 +3,10 @@
 [ext_resource type="Script" uid="uid://6windao8pnav" path="res://enemy.gd" id="1_355ya"]
 [ext_resource type="Texture2D" uid="uid://djbxfm3lrid5o" path="res://icon.svg" id="2_0p8j0"]
 [ext_resource type="Script" uid="uid://cytbaoaxrnmcx" path="res://Scrpit/KillboxEnemy.gd" id="3_0p8j0"]
+
+
+[ext_resource type="Script" uid="uid://dy0j7hueodkgu" path="res://Scrpit/hitbox.gd" id="4_pu7dk"]
+
 [ext_resource type="Texture2D" uid="uid://dfd0xvgbxvas8" path="res://Assets/Mana/black.png" id="5_4w8p1"]
 [ext_resource type="Texture2D" uid="uid://bt0ywbb1fx0sq" path="res://Assets/Mana/green.png" id="6_6ahrc"]
 [ext_resource type="Script" uid="uid://c4u2ih3na56yi" path="res://Scrpit/enemy health.gd" id="7_kkrda"]
@@ -18,8 +22,11 @@ size = Vector2(137, 136)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0p8j0"]
 size = Vector2(180, 182.667)
 
-[node name="Enemy" type="CharacterBody2D"]
-collision_layer = 3
+
+
+[node name="Enemy" type="CharacterBody2D" groups=["Enemies"]]
+collision_layer = 2
+
 collision_mask = 3
 motion_mode = 1
 wall_min_slide_angle = 0.0
@@ -42,7 +49,7 @@ avoidance_mask = 128
 wait_time = 0.1
 autostart = true
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["Enemies"]]
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("3_0p8j0")
@@ -80,6 +87,6 @@ texture = ExtResource("8_nrubw")
 script = ExtResource("9_syyve")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
-[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
