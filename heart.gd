@@ -1,8 +1,8 @@
 extends HBoxContainer
 
-var heart_full = preload("res://Assets/brackeys_platformer_assets/hearts/2381669-6ade057fd7f23ced.webp")
-var heart_half = preload("res://Assets/brackeys_platformer_assets/hearts/2381669-df0942608cf9d9c4.webp")
-var heart_empty = preload("res://Assets/brackeys_platformer_assets/hearts/2381669-fac9de5069d05001.webp")
+var heart_full = preload("res://Assets/brackeys_platformer_assets/2381669-6ade057fd7f23ced.webp")
+var heart_half = preload("res://Assets/brackeys_platformer_assets/2381669-df0942608cf9d9c4.webp")
+var heart_empty = preload("res://Assets/brackeys_platformer_assets/2381669-fac9de5069d05001.webp")
 
 enum TYPES {type1}
 

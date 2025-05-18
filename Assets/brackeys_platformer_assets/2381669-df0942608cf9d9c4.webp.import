@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c8qet7pcwbfgu"
-path="res://.godot/imported/2381669-df0942608cf9d9c4.webp-83505079aa801dd581b41ee0f782c750.ctex"
+path="res://.godot/imported/2381669-df0942608cf9d9c4.webp-aa864aab53c571b094f1751b0abad8be.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/brackeys_platformer_assets/hearts/2381669-df0942608cf9d9c4.webp"
-dest_files=["res://.godot/imported/2381669-df0942608cf9d9c4.webp-83505079aa801dd581b41ee0f782c750.ctex"]
+source_file="res://Assets/brackeys_platformer_assets/2381669-df0942608cf9d9c4.webp"
+dest_files=["res://.godot/imported/2381669-df0942608cf9d9c4.webp-aa864aab53c571b094f1751b0abad8be.ctex"]
 
 [params]
 

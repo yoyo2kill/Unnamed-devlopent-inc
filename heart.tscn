@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bdvupl28gv70r"]
 
 [ext_resource type="Script" uid="uid://dyfk8ejs0rlta" path="res://heart.gd" id="1_7p8dj"]
-[ext_resource type="Texture2D" uid="uid://dg5k5baflsj1n" path="res://Assets/brackeys_platformer_assets/hearts/2381669-6ade057fd7f23ced.webp" id="2_pembh"]
+[ext_resource type="Texture2D" uid="uid://dg5k5baflsj1n" path="res://Assets/brackeys_platformer_assets/2381669-6ade057fd7f23ced.webp" id="2_pembh"]
 
 [node name="heart" type="HBoxContainer"]
 offset_right = 40.0
