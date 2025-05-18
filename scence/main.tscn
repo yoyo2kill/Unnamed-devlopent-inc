@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://vc6lmjo2smpw"]
+[gd_scene load_steps=16 format=3 uid="uid://vc6lmjo2smpw"]
 
 [ext_resource type="PackedScene" uid="uid://o8wcs6qgym68" path="res://scence/player.tscn" id="1_tt04m"]
 [ext_resource type="PackedScene" uid="uid://n1gdfyptt3xx" path="res://scence/enemy.tscn" id="3_7essg"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cfchafbrsl88s" path="res://scence/duplicator.tscn" id="9_4rajj"]
 [ext_resource type="Script" uid="uid://bgxpjvaqluy6t" path="res://Scrpit/spawner.gd" id="9_bk32q"]
 [ext_resource type="Texture2D" uid="uid://60enuq2xioj" path="res://Assets/Restaurant-Sprite_tile.png" id="10_4rajj"]
+[ext_resource type="PackedScene" uid="uid://b7yancvguxpsh" path="res://scence/speed_enemy.tscn" id="10_b580w"]
 [ext_resource type="PackedScene" uid="uid://hb1yvwkstoa7" path="res://Scrpit/spitter.tscn" id="10_bk32q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bk32q"]
@@ -113,12 +114,14 @@ one_shot = true
 [node name="WaveSpawner" type="Node2D" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("9_bk32q")
 player = NodePath("../CharacterBody2D")
-round_1_enemy_types = Array[String](["Enemy_spitter", "Enemy"])
-round_1_enemy_counts = Array[int]([2, 1])
+round_1_enemy_types = Array[String](["Enemy"])
+round_2_enemy_types = Array[String](["Enemy", "Enemy_spitter"])
+round_2_enemy_counts = Array[int]([3, 2])
+round_3_enemy_types = Array[String](["Enemy", "Enemy_spitter", "SPEED_ENEMY"])
+round_3_enemy_counts = Array[int]([5, 3, 1])
 
 [node name="Enemy" parent="WaveSpawner" node_paths=PackedStringArray("player") instance=ExtResource("3_7essg")]
 position = Vector2(171824, -79007)
-scale = Vector2(0.5, 0.5)
 player = NodePath("../../CharacterBody2D")
 
 [node name="Enemy_spitter" parent="WaveSpawner" instance=ExtResource("10_bk32q")]
@@ -131,6 +134,10 @@ player = NodePath("../../CharacterBody2D")
 [node name="Wave timer" type="Timer" parent="WaveSpawner"]
 wait_time = 10.0
 one_shot = true
+
+[node name="SPEED_ENEMY" parent="WaveSpawner" node_paths=PackedStringArray("player") instance=ExtResource("10_b580w")]
+position = Vector2(1e+10, 0)
+player = NodePath("../../CharacterBody2D")
 
 [node name="Node" type="Node" parent="."]
 
@@ -277,10 +284,10 @@ shape = SubResource("RectangleShape2D_b580w")
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -1000
 z_as_relative = false
-offset_left = -3953.0
-offset_top = -4684.0
-offset_right = 5487.0
-offset_bottom = 5041.0
+offset_left = -3905.0
+offset_top = -4672.0
+offset_right = 5535.0
+offset_bottom = 5053.0
 color = Color(0, 0, 0, 1)
 
 [connection signal="timeout" from="CharacterBody2D/Camera2D/Panel2/Panel cool" to="CharacterBody2D/Camera2D/Panel2" method="_on_panel_cool_timeout"]

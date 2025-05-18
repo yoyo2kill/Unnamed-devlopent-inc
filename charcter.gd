@@ -39,6 +39,7 @@ func _input(event: InputEvent) -> void:
 			shoot()
 	if texture_progress_bar.value >= 200:
 		if event.is_action_pressed("spell2"):
+			texture_progress_bar.value -= 200
 			shoot_freeze()
 
 	if event.is_action_pressed("ui_select") and is_ready:
@@ -87,15 +88,6 @@ func _process(delta):
 		
 		texture_progress_bar.value -= 250
 		cast_lightning_spell()
-	else:
-		if animated_sprite_2d.animation == "walk_left":
-			animated_sprite_2d.animation = "idle_left"
-		if animated_sprite_2d.animation == "walk_right":
-				animated_sprite_2d.animation = "idle_right"
-		if animated_sprite_2d.animation == "walk_up":
-				animated_sprite_2d.animation = "idle_up"
-		if animated_sprite_2d.animation == "walk_down":
-				animated_sprite_2d.animation = "idle_down"
 
 func cast_lightning_spell():
 	# Get the direction to cast (for example, towards mouse cursor)

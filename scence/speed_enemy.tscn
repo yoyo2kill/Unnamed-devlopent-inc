@@ -1,13 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://n1gdfyptt3xx"]
+[gd_scene load_steps=12 format=3 uid="uid://b7yancvguxpsh"]
 
-[ext_resource type="Script" uid="uid://6windao8pnav" path="res://enemy.gd" id="1_355ya"]
-[ext_resource type="Texture2D" uid="uid://djbxfm3lrid5o" path="res://icon.svg" id="2_0p8j0"]
-[ext_resource type="Script" uid="uid://cytbaoaxrnmcx" path="res://Scrpit/KillboxEnemy.gd" id="3_0p8j0"]
-[ext_resource type="Texture2D" uid="uid://dfd0xvgbxvas8" path="res://Assets/Mana/black.png" id="5_4w8p1"]
-[ext_resource type="Texture2D" uid="uid://bt0ywbb1fx0sq" path="res://Assets/Mana/green.png" id="6_6ahrc"]
-[ext_resource type="Script" uid="uid://c4u2ih3na56yi" path="res://Scrpit/enemy health.gd" id="7_kkrda"]
-[ext_resource type="Texture2D" uid="uid://cdknt4dfa22xx" path="res://12344.png" id="8_nrubw"]
-[ext_resource type="Script" uid="uid://ddintlx20yoej" path="res://Scrpit/on_fire.gd" id="9_syyve"]
+[ext_resource type="Script" uid="uid://06ghit8gvf1a" path="res://Scrpit/SPEED_ENEMY.gd" id="1_rtduo"]
+[ext_resource type="Texture2D" uid="uid://djbxfm3lrid5o" path="res://icon.svg" id="2_326vi"]
+[ext_resource type="Script" uid="uid://cytbaoaxrnmcx" path="res://Scrpit/KillboxEnemy.gd" id="3_y1onm"]
+[ext_resource type="Texture2D" uid="uid://dfd0xvgbxvas8" path="res://Assets/Mana/black.png" id="4_q6jc7"]
+[ext_resource type="Texture2D" uid="uid://bt0ywbb1fx0sq" path="res://Assets/Mana/green.png" id="5_lo8rb"]
+[ext_resource type="Script" uid="uid://c4u2ih3na56yi" path="res://Scrpit/enemy health.gd" id="6_wxbef"]
+[ext_resource type="Texture2D" uid="uid://cdknt4dfa22xx" path="res://12344.png" id="7_ldy34"]
+[ext_resource type="Script" uid="uid://ddintlx20yoej" path="res://Scrpit/on_fire.gd" id="8_rmtk8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_355ya"]
 radius = 56.0357
@@ -18,18 +18,18 @@ size = Vector2(137, 136)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0p8j0"]
 size = Vector2(180, 182.667)
 
-[node name="Enemy" type="CharacterBody2D"]
-scale = Vector2(0.8, 0.8)
+[node name="SPEED_ENEMY" type="CharacterBody2D"]
+scale = Vector2(0.2, 0.2)
 collision_layer = 3
 collision_mask = 3
 motion_mode = 1
 wall_min_slide_angle = 0.0
 safe_margin = 0.001
-script = ExtResource("1_355ya")
+script = ExtResource("1_rtduo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.988235, 0, 0, 1)
-texture = ExtResource("2_0p8j0")
+texture = ExtResource("2_326vi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_355ya")
@@ -46,7 +46,7 @@ autostart = true
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 4
-script = ExtResource("3_0p8j0")
+script = ExtResource("3_y1onm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0.5, 0)
@@ -68,17 +68,17 @@ offset_top = -110.0
 offset_right = 344.0
 offset_bottom = -52.0
 scale = Vector2(0.4, 0.4)
-max_value = 200.0
-value = 200.0
-texture_under = ExtResource("5_4w8p1")
-texture_progress = ExtResource("6_6ahrc")
-script = ExtResource("7_kkrda")
+max_value = 50.0
+value = 50.0
+texture_under = ExtResource("4_q6jc7")
+texture_progress = ExtResource("5_lo8rb")
+script = ExtResource("6_wxbef")
 
 [node name="12344" type="Sprite2D" parent="."]
 position = Vector2(-177.25, 0.124998)
 scale = Vector2(0.108929, 0.126019)
-texture = ExtResource("8_nrubw")
-script = ExtResource("9_syyve")
+texture = ExtResource("7_ldy34")
+script = ExtResource("8_rmtk8")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
