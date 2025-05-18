@@ -44,7 +44,7 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area is Fireball:
 		on_fire = true
 		fire_timer = 0.0
-		enemy_health.value -= 20
+		enemy_health.value -= 10
 	if area is Freeze:
 		on_freeze = true
 		freeze_timer = 0.0

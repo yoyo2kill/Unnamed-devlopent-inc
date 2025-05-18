@@ -8,6 +8,9 @@ const GRAVITY = 980  # Added gravity constant
 @onready var FIREBALL = preload("res://scence/fireball.tscn")
 @onready var texture_progress_bar: TextureProgressBar = $TextureProgressBar
 @onready var FREEZE = preload("res://scence/freeze.tscn")  # Preload the freeze scene
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -17,6 +20,8 @@ func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("ui_left", "ui_right")
 	if direction:
 		velocity.x = direction * SPEED
+	
+	
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
@@ -25,7 +30,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y = updown * SPEED
 	else:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
-
+	
 	move_and_slide()
 func _input(event: InputEvent) -> void:
 	if texture_progress_bar.value >= 100:
@@ -79,8 +84,18 @@ var mana = 100  # Starting mana
 func _process(delta):
 	# Check for lightning spell input
 	if Input.is_action_just_pressed("Lightning") and can_cast_lightning and mana >= lightning_mana_cost:
+		
 		texture_progress_bar.value -= 250
 		cast_lightning_spell()
+	else:
+		if animated_sprite_2d.animation == "walk_left":
+			animated_sprite_2d.animation = "idle_left"
+		if animated_sprite_2d.animation == "walk_right":
+				animated_sprite_2d.animation = "idle_right"
+		if animated_sprite_2d.animation == "walk_up":
+				animated_sprite_2d.animation = "idle_up"
+		if animated_sprite_2d.animation == "walk_down":
+				animated_sprite_2d.animation = "idle_down"
 
 func cast_lightning_spell():
 	# Get the direction to cast (for example, towards mouse cursor)

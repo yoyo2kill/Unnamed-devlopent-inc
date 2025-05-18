@@ -86,18 +86,22 @@ text = "Wave 1"
 wait_time = 10.0
 
 [node name="HealthController" parent="CharacterBody2D" groups=["health_controller"] instance=ExtResource("6_qj2y4")]
+z_index = 100
+z_as_relative = false
 offset_left = -12.0
 offset_top = 89.0
 offset_right = 28.0
 offset_bottom = 129.0
+scale = Vector2(0.4, 0.4)
 
 [node name="HeartContainer" parent="CharacterBody2D/HealthController" instance=ExtResource("6_sr2ul")]
 layout_mode = 0
-offset_left = -517.0
-offset_top = -368.0
-offset_right = 499.0
-offset_bottom = -168.0
-scale = Vector2(0.4, 0.4)
+offset_left = -1192.5
+offset_top = -827.5
+offset_right = -176.5
+offset_bottom = -627.5
+scale = Vector2(0.6, 0.6)
+pivot_offset = Vector2(0, -1)
 
 [node name="Timer2" type="Timer" parent="CharacterBody2D"]
 wait_time = 0.2
@@ -271,7 +275,6 @@ position = Vector2(-788, -577.5)
 shape = SubResource("RectangleShape2D_b580w")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
 z_index = -1000
 z_as_relative = false
 offset_left = -3953.0

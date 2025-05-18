@@ -74,7 +74,7 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area is Fireball:
 		on_fire = true
 		fire_timer = 0.0
-		enemy_health.value -= 20
+		enemy_health.value -= 10
 	elif area.is_in_group("lightning") or area.get_parent().is_in_group("lightning") or area.name.begins_with("Lightning"):
 		take_lightning_damage(30)
 

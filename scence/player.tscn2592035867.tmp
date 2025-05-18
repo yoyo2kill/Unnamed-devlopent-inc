@@ -329,8 +329,8 @@ inv = ExtResource("2_qav0y")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0ue2o")
-animation = &"walk_left"
-frame_progress = 0.865586
+animation = &"walk_up"
+frame_progress = 0.454494
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 22.5)
