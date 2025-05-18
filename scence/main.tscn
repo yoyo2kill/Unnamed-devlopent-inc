@@ -1,14 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://vc6lmjo2smpw"]
+[gd_scene load_steps=11 format=3 uid="uid://vc6lmjo2smpw"]
 
 [ext_resource type="PackedScene" uid="uid://vbe7wm6in45i" path="res://scence/tile_map_layer.tscn" id="1_sr2ul"]
 [ext_resource type="PackedScene" uid="uid://o8wcs6qgym68" path="res://scence/player.tscn" id="1_tt04m"]
 [ext_resource type="PackedScene" uid="uid://n1gdfyptt3xx" path="res://scence/enemy.tscn" id="3_7essg"]
-[ext_resource type="Script" uid="uid://cexv8h5jjb4mr" path="res://scence/panel.gd" id="3_qj2y4"]
-[ext_resource type="Script" uid="uid://c52qr1v42tdkw" path="res://scence/panel_2.gd" id="4_47hqa"]
+[ext_resource type="Script" uid="uid://cexv8h5jjb4mr" path="res://Scrpit/panel.gd" id="3_qj2y4"]
+[ext_resource type="Script" uid="uid://c52qr1v42tdkw" path="res://Scrpit/panel_2.gd" id="4_47hqa"]
 [ext_resource type="PackedScene" uid="uid://duf7pafqgm6jm" path="res://scence/door.tscn" id="5_qj2y4"]
 [ext_resource type="PackedScene" uid="uid://crt0i8ojonq0r" path="res://control.tscn" id="6_qj2y4"]
 [ext_resource type="PackedScene" uid="uid://bdvupl28gv70r" path="res://heart.tscn" id="6_sr2ul"]
-[ext_resource type="Script" uid="uid://bgxpjvaqluy6t" path="res://scence/spawner.gd" id="9_bk32q"]
+[ext_resource type="Script" uid="uid://bgxpjvaqluy6t" path="res://Scrpit/spawner.gd" id="9_bk32q"]
+[ext_resource type="PackedScene" uid="uid://hb1yvwkstoa7" path="res://Scrpit/spitter.tscn" id="10_bk32q"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -94,6 +95,9 @@ script = ExtResource("9_bk32q")
 player = NodePath("../CharacterBody2D")
 
 [node name="Enemy" parent="WaveSpawner" node_paths=PackedStringArray("player") instance=ExtResource("3_7essg")]
-position = Vector2(106672, -51359)
+position = Vector2(171824, -79007)
 scale = Vector2(0.5, 0.5)
 player = NodePath("../../CharacterBody2D")
+
+[node name="spitter" parent="WaveSpawner" instance=ExtResource("10_bk32q")]
+position = Vector2(411, -563)

@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var original_enemy = $Enemy
 @export var player: Node2D  # Add this export for player reference
-@export var num_enemies_to_spawn: int = 25
+@export var num_enemies_to_spawn: int = 0
 
 func _ready():
 	# Print debug info to help diagnose issues

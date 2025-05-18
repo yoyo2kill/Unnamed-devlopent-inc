@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://hb1yvwkstoa7"]
+
+[ext_resource type="Script" uid="uid://cimkkfracxvav" path="res://Scrpit/spitter.gd" id="1_dl3ug"]
+[ext_resource type="Texture2D" uid="uid://djbxfm3lrid5o" path="res://icon.svg" id="2_g3v83"]
+[ext_resource type="PackedScene" uid="uid://dwtmi1ma7ky1j" path="res://scence/spit.tscn" id="2_xv8kp"]
+[ext_resource type="Script" uid="uid://b0vigo4eouqpn" path="res://Scrpit/Spitter_area.gd" id="4_xv8kp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xv8kp"]
+size = Vector2(129, 129)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g3v83"]
+size = Vector2(136, 137)
+
+[node name="spitter" type="CharacterBody2D"]
+script = ExtResource("1_dl3ug")
+bullet_scene = ExtResource("2_xv8kp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.433091, 0.655275, 0, 1)
+texture = ExtResource("2_g3v83")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 1.5)
+shape = SubResource("RectangleShape2D_xv8kp")
+
+[node name="Area2D" type="Area2D" parent="." groups=["enemy_hitbox"]]
+script = ExtResource("4_xv8kp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2, 2.5)
+shape = SubResource("RectangleShape2D_g3v83")

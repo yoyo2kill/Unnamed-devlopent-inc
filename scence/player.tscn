@@ -48,6 +48,7 @@ position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_4snmf")
 
 [node name="Inv_UI" parent="." instance=ExtResource("4_4snmf")]
+visible = false
 z_index = 1
 anchors_preset = 5
 anchor_left = 0.5

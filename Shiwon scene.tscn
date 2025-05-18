@@ -3,9 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://vbe7wm6in45i" path="res://scence/tile_map_layer.tscn" id="1_sr2ul"]
 [ext_resource type="PackedScene" uid="uid://o8wcs6qgym68" path="res://scence/player.tscn" id="1_tt04m"]
 [ext_resource type="PackedScene" uid="uid://n1gdfyptt3xx" path="res://scence/enemy.tscn" id="3_7essg"]
-[ext_resource type="Script" uid="uid://cexv8h5jjb4mr" path="res://scence/panel.gd" id="3_sr2ul"]
-[ext_resource type="Script" uid="uid://c52qr1v42tdkw" path="res://scence/panel_2.gd" id="4_qj2y4"]
-[ext_resource type="Script" uid="uid://bgxpjvaqluy6t" path="res://scence/spawner.gd" id="4_shc2a"]
+[ext_resource type="Script" uid="uid://cexv8h5jjb4mr" path="res://Scrpit/panel.gd" id="3_sr2ul"]
+[ext_resource type="Script" uid="uid://c52qr1v42tdkw" path="res://Scrpit/panel_2.gd" id="4_qj2y4"]
+[ext_resource type="Script" uid="uid://bgxpjvaqluy6t" path="res://Scrpit/spawner.gd" id="4_shc2a"]
 [ext_resource type="PackedScene" uid="uid://duf7pafqgm6jm" path="res://scence/door.tscn" id="5_qj2y4"]
 
 [node name="Node2D" type="Node2D"]
