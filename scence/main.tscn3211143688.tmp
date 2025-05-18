@@ -16,18 +16,11 @@ position = Vector2(12, -89)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 
-[node name="HealthController" parent="CharacterBody2D" groups=["health_controller"] instance=ExtResource("6_qj2y4")]
-offset_left = -12.0
-offset_top = 89.0
-offset_right = 28.0
-offset_bottom = 129.0
-
-[node name="HeartContainer" parent="CharacterBody2D/HealthController" instance=ExtResource("6_sr2ul")]
-layout_mode = 0
-offset_left = -517.0
-offset_top = -368.0
-offset_right = 499.0
-offset_bottom = -168.0
+[node name="heart" parent="CharacterBody2D" instance=ExtResource("6_sr2ul")]
+offset_left = -529.0
+offset_top = -279.0
+offset_right = 487.0
+offset_bottom = -79.0
 scale = Vector2(0.4, 0.4)
 
 [node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_7essg")]
@@ -39,3 +32,5 @@ fire_damge = 1.0
 [node name="Area2D" parent="." instance=ExtResource("5_qj2y4")]
 position = Vector2(-499, -404)
 scale = Vector2(3, 3)
+
+[node name="Control" parent="." instance=ExtResource("6_qj2y4")]
