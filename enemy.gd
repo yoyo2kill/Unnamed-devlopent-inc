@@ -22,6 +22,7 @@ func _process(delta):
 	process_fire(delta)
 	process_health_check(delta)
 
+
 func _physics_process(_delta: float) -> void:
 	var distance_to_player = global_position.distance_to(player.global_position)
 	if distance_to_player <= detection_radius:
@@ -50,7 +51,18 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		freeze_timer = 0.0
 		enemy_health.value -= 20
 		speed = 100
-
+func take_lightning_damage(damage_amount: float) -> void:
+	enemy_health.value -= damage_amount
 func process_health_check(delta):
 	if enemy_health.value <= 0:
 		queue_free()
+# In your Enemy script:
+signal enemy_died
+
+# In your enemy death function (wherever the enemy is destroyed):
+func die():
+	# Your existing death code...
+	
+	# Emit the signal before freeing
+	emit_signal("enemy_died")
+	queue_free()

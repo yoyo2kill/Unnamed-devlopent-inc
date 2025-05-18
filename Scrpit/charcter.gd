@@ -14,11 +14,10 @@ const JUMP_VELOCITY = -400.0
 const GRAVITY = 980  # Added gravity constant
 
 @onready var FIREBALL = preload("res://scence/fireball.tscn")
-@onready var ELECTRICSHOCK = preload("res://scence/electricshock.tscn")
 @onready var texture_progress_bar: TextureProgressBar = $TextureProgressBar
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.ww
+	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
 	
