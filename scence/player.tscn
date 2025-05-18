@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://o8wcs6qgym68"]
 
-[ext_resource type="Script" uid="uid://c8t4eaaxqxacy" path="res://Scrpit/charcter.gd" id="1_608sh"]
+[ext_resource type="Script" uid="uid://c8t4eaaxqxacy" path="res://charcter.gd" id="1_608sh"]
 [ext_resource type="Resource" uid="uid://cvqqcahsq42t5" path="res://inventory/player_inv.tres" id="2_qav0y"]
 [ext_resource type="Texture2D" uid="uid://djlpoeq1xhe71" path="res://Assets/animation/wiz.png" id="3_4snmf"]
 [ext_resource type="PackedScene" uid="uid://cgwdjcu54cmxb" path="res://inventory/inv_ui.tscn" id="4_4snmf"]

@@ -16,7 +16,7 @@
 [node name="TileMapLayer" parent="." instance=ExtResource("1_sr2ul")]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_tt04m")]
-position = Vector2(12, -89)
+position = Vector2(35, -153)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 
@@ -100,6 +100,7 @@ scale = Vector2(3, 3)
 [node name="WaveSpawner" type="Node2D" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("9_bk32q")
 player = NodePath("../CharacterBody2D")
+num_enemies_to_spawn = 10
 
 [node name="Enemy" parent="WaveSpawner" node_paths=PackedStringArray("player") instance=ExtResource("3_7essg")]
 position = Vector2(171824, -79007)

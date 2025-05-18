@@ -4,6 +4,7 @@ extends Area2D
 @export var damage = 1
 @export var lifetime = 5.0  # Seconds until bullet disappears
 
+var health_controller_scene = preload("res://control.tscn")
 var direction = Vector2.ZERO  # Will be set by shooter
 var source = null  # Who fired this bullet
 
@@ -12,38 +13,30 @@ func _ready():
 	var timer = Timer.new()
 	timer.wait_time = lifetime
 	timer.one_shot = true
-	timer.timeout.connect(_on_lifetime_timeout)
 	add_child(timer)
 	timer.start()
+	timer.timeout.connect(func(): queue_free())
 	
 	# Connect the body entered signal
 	body_entered.connect(_on_body_entered)
 	
-	# Rotate bullet to match direction
-	rotation = direction.angle()
-
 func _physics_process(delta):
 	# Move in the specified direction
 	position += direction * speed * delta
 
-func _on_body_entered(body):
-	# Don't damage the source of the bullet
-	if body == source:
-		return
+func _on_body_entered(body: Node2D) -> void:
+	if body is CharacterBody2D:
+		# Instance the health controller or find existing one
+		var health_controller = body.get_node_or_null("HealthController")
 		
-	# Check if we hit the player
-	if body.is_in_group("player"):
-		# Call damage function on player if it exists
-		if body.has_method("take_damage"):
-			body.take_damage(damage)
-	
-	# Check if we hit another enemy
-	elif body.get_script() == source.get_script():
-		# Skip damaging other enemies of the same type
-		return
-	
-	# Delete the bullet on impact
-	queue_free()
-
-func _on_lifetime_timeout():
-	queue_free()  # Remove bullet after lifetime expires
+		# If no controller found, try to create one from the scene
+		if health_controller == null:
+			health_controller = health_controller_scene.instantiate()
+			body.add_child(health_controller)
+		
+		# Now call the method on the instance
+		if health_controller.has_method("damage_player"):
+			health_controller.damage_player(damage)
+		
+		# Destroy bullet on hit
+		queue_free()

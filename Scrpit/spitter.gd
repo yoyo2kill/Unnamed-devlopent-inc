@@ -1,13 +1,16 @@
 extends CharacterBody2D
-
+@onready var enemy_health: TextureProgressBar = $EnemyHealth
 # Enemy properties
 @export var speed = 50.0
 @export var health = 3
-@export var detection_radius = 1000.0
-@export var shooting_distance = 350.0
+@export var detection_radius = 300.0
+@export var shooting_distance = 200.0
 @export var bullet_speed = 200.0
 @export var fire_rate = 1.5  # Shots per second
-
+var on_fire = false
+var fire_damage = 1  # Damage per second
+var fire_duration = 1.0  # Total duration in seconds
+var fire_timer = 0.0  # Current timer
 # Bullet scene - you need to create a bullet scene and assign it here
 @export var bullet_scene: PackedScene
 
@@ -46,8 +49,7 @@ func _physics_process(delta):
 			velocity = Vector2.ZERO
 			
 		# Rotate to face player
-		look_at(player.global_position)
-		
+	
 		# Shoot if we can
 		if can_shoot and distance_to_player <= shooting_distance:
 			shoot()
@@ -86,8 +88,26 @@ func shoot():
 func _on_shoot_timer_timeout():
 	can_shoot = true
 
-# Handle taking damage
-func take_damage(amount):
-	health -= amount
-	if health <= 0:
-		queue_free()  # Enemy dies
+func process_fire(delta):
+	if on_fire:
+		fire_timer += delta
+		if fire_timer >= fire_duration:
+			on_fire = false
+			fire_timer = 0.0
+		else:
+			enemy_health.value -= 1.0
+func _process(delta):
+	process_fire(delta)
+	process_health_check(delta)
+
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area is Fireball:
+		on_fire = true
+		fire_timer = 0.0
+		enemy_health.value -= 20
+
+func process_health_check(delta):
+	if enemy_health.value <= 0:
+		queue_free()
