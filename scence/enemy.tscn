@@ -34,6 +34,9 @@ texture = ExtResource("2_0p8j0")
 shape = SubResource("CircleShape2D_355ya")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+avoidance_layers = 128
+avoidance_mask = 128
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1

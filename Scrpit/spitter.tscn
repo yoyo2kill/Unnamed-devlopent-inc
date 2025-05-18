@@ -15,6 +15,8 @@ size = Vector2(136, 137)
 
 [node name="spitter" type="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)
+collision_layer = 129
+collision_mask = 129
 script = ExtResource("1_dl3ug")
 detection_radius = 1000.0
 shooting_distance = 350.0

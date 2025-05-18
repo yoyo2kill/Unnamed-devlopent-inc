@@ -1,5 +1,4 @@
 extends CharacterBody2D
-class_name Player
 @onready var coldown_timer = $"coldown timer"
 @export var inv: Inv
 var dash_timer = 2
