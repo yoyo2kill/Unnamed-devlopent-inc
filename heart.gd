@@ -1,3 +1,4 @@
+
 extends HBoxContainer
 
 var heart_full = preload("res://Assets/brackeys_platformer_assets/2381669-6ade057fd7f23ced.webp")
