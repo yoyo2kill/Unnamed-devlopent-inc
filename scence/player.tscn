@@ -49,7 +49,6 @@ position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_4snmf")
 
 [node name="Inv_UI" parent="." instance=ExtResource("4_4snmf")]
-visible = false
 z_index = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -63,16 +62,16 @@ grow_vertical = 1
 scale = Vector2(4, 4)
 
 [node name="TextureProgressBar" parent="." instance=ExtResource("5_4snmf")]
-offset_left = -524.0
-offset_top = -254.0
-offset_right = -95.0
-offset_bottom = -196.0
+offset_left = -525.0
+offset_top = -200.0
+offset_right = -96.0
+offset_bottom = -142.0
 scale = Vector2(0.8, 0.8)
 value = 555.0
 
 [node name="heart" parent="." instance=ExtResource("6_e4r8n")]
-offset_left = -541.0
-offset_top = -348.0
-offset_right = 475.0
-offset_bottom = -148.0
+offset_left = -537.0
+offset_top = -282.0
+offset_right = 479.0
+offset_bottom = -82.0
 scale = Vector2(0.4, 0.4)
