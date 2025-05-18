@@ -47,5 +47,39 @@ func shoot():
 	fireball.fireball_dir = (get_global_mouse_position() - position).normalized()
 	get_parent().add_child(fireball)
 
-func collect(item):
-	inv.insert(item)
+
+@onready var LightningSpell = preload("res://scence/LightningSpell.tscn")
+
+# Spell properties
+@export var lightning_cooldown: float = 2.0
+@export var lightning_mana_cost: int = 0
+
+# Spell state
+var can_cast_lightning = true
+var mana = 100  # Starting mana
+
+func _process(delta):
+	# Check for lightning spell input
+	if Input.is_action_just_pressed("Lightning") and can_cast_lightning and mana >= lightning_mana_cost:
+		texture_progress_bar.value -= 250
+		cast_lightning_spell()
+
+func cast_lightning_spell():
+	# Get the direction to cast (for example, towards mouse cursor)
+	var mouse_pos = get_global_mouse_position()
+	var direction = mouse_pos - global_position
+	
+	# Create instance of the lightning spell
+	var lightning = LightningSpell.instantiate()
+	get_parent().add_child(lightning)
+	
+	# Cast the lightning from the player's position in the specified direction
+	lightning.cast(global_position, direction)
+	
+	# Apply cooldown
+	can_cast_lightning = false
+	mana -= lightning_mana_cost
+	
+	# Start cooldown timer
+	var cooldown_timer = get_tree().create_timer(lightning_cooldown)
+	cooldown_timer.timeout.connect(func(): can_cast_lightning = true)
