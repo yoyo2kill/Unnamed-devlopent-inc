@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://n1gdfyptt3xx"]
+[gd_scene load_steps=12 format=3 uid="uid://n1gdfyptt3xx"]
 
-[ext_resource type="Script" uid="uid://6windao8pnav" path="res://Scrpit/enemy.gd" id="1_355ya"]
+[ext_resource type="Script" uid="uid://6windao8pnav" path="res://enemy.gd" id="1_355ya"]
 [ext_resource type="Texture2D" uid="uid://djbxfm3lrid5o" path="res://icon.svg" id="2_0p8j0"]
 [ext_resource type="Script" uid="uid://cytbaoaxrnmcx" path="res://Scrpit/KillboxEnemy.gd" id="3_0p8j0"]
-[ext_resource type="Script" uid="uid://dy0j7hueodkgu" path="res://Scrpit/hitbox.gd" id="4_pu7dk"]
 [ext_resource type="Texture2D" uid="uid://dfd0xvgbxvas8" path="res://Assets/Mana/black.png" id="5_4w8p1"]
 [ext_resource type="Texture2D" uid="uid://bt0ywbb1fx0sq" path="res://Assets/Mana/green.png" id="6_6ahrc"]
 [ext_resource type="Script" uid="uid://c4u2ih3na56yi" path="res://Scrpit/enemy health.gd" id="7_kkrda"]
@@ -49,11 +48,10 @@ script = ExtResource("3_0p8j0")
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_pu7dk")
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." groups=["enemy_hitbox"]]
 scale = Vector2(3, 3)
 collision_layer = 2
 collision_mask = 2
-script = ExtResource("4_pu7dk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0.166667, 0.166666)
@@ -81,6 +79,6 @@ texture = ExtResource("8_nrubw")
 script = ExtResource("9_syyve")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

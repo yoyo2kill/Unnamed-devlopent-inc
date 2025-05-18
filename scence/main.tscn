@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://vc6lmjo2smpw"]
+[gd_scene load_steps=11 format=3 uid="uid://vc6lmjo2smpw"]
 
 [ext_resource type="PackedScene" uid="uid://vbe7wm6in45i" path="res://scence/tile_map_layer.tscn" id="1_sr2ul"]
 [ext_resource type="PackedScene" uid="uid://o8wcs6qgym68" path="res://scence/player.tscn" id="1_tt04m"]
 [ext_resource type="PackedScene" uid="uid://n1gdfyptt3xx" path="res://scence/enemy.tscn" id="3_7essg"]
+[ext_resource type="Script" uid="uid://cexv8h5jjb4mr" path="res://Scrpit/panel.gd" id="3_qj2y4"]
+[ext_resource type="Script" uid="uid://c52qr1v42tdkw" path="res://Scrpit/panel_2.gd" id="4_47hqa"]
 [ext_resource type="PackedScene" uid="uid://duf7pafqgm6jm" path="res://scence/door.tscn" id="5_qj2y4"]
+[ext_resource type="PackedScene" uid="uid://crt0i8ojonq0r" path="res://control.tscn" id="6_qj2y4"]
+[ext_resource type="PackedScene" uid="uid://bdvupl28gv70r" path="res://heart.tscn" id="6_sr2ul"]
+[ext_resource type="Script" uid="uid://bgxpjvaqluy6t" path="res://Scrpit/spawner.gd" id="9_bk32q"]
+[ext_resource type="PackedScene" uid="uid://hb1yvwkstoa7" path="res://Scrpit/spitter.tscn" id="10_bk32q"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -27,6 +33,73 @@ position = Vector2(683, -144)
 scale = Vector2(0.5, 0.5)
 player = NodePath("../CharacterBody2D")
 fire_damge = 1.0
+=======
+[node name="Panel" type="Panel" parent="CharacterBody2D/Camera2D"]
+offset_left = 399.0
+offset_top = -301.0
+offset_right = 553.0
+offset_bottom = -261.0
+script = ExtResource("3_qj2y4")
+
+[node name="Minutes" type="Label" parent="CharacterBody2D/Camera2D/Panel"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = -3.0
+offset_right = 60.0
+offset_bottom = 39.0
+theme_override_font_sizes/font_size = 30
+text = ":00"
+horizontal_alignment = 1
+
+[node name="Seconds" type="Label" parent="CharacterBody2D/Camera2D/Panel"]
+layout_mode = 0
+offset_left = 60.0
+offset_top = -3.0
+offset_right = 103.0
+offset_bottom = 39.0
+theme_override_font_sizes/font_size = 30
+text = ":00"
+horizontal_alignment = 1
+
+[node name="Msec" type="Label" parent="CharacterBody2D/Camera2D/Panel"]
+layout_mode = 0
+offset_left = 101.0
+offset_top = -3.0
+offset_right = 144.0
+offset_bottom = 39.0
+theme_override_font_sizes/font_size = 30
+text = ":00"
+horizontal_alignment = 1
+
+[node name="Panel2" type="Panel" parent="CharacterBody2D/Camera2D"]
+offset_left = 294.0
+offset_top = -301.0
+offset_right = 391.0
+offset_bottom = -261.0
+script = ExtResource("4_47hqa")
+
+[node name="WaveLabel" type="Label" parent="CharacterBody2D/Camera2D/Panel2"]
+layout_mode = 0
+offset_left = 5.0
+offset_right = 101.0
+offset_bottom = 39.0
+theme_override_font_sizes/font_size = 25
+text = "Wave 1"
+
+[node name="HealthController" parent="CharacterBody2D" groups=["health_controller"] instance=ExtResource("6_qj2y4")]
+offset_left = -12.0
+offset_top = 89.0
+offset_right = 28.0
+offset_bottom = 129.0
+
+[node name="HeartContainer" parent="CharacterBody2D/HealthController" instance=ExtResource("6_sr2ul")]
+layout_mode = 0
+offset_left = -517.0
+offset_top = -368.0
+offset_right = 499.0
+offset_bottom = -168.0
+scale = Vector2(0.4, 0.4)
+
 
 [node name="Area2D" parent="." instance=ExtResource("5_qj2y4")]
 position = Vector2(-499, -404)
@@ -34,3 +107,15 @@ scale = Vector2(3, 3)
 
 [connection signal="timeout" from="CharacterBody2D/Timer" to="CharacterBody2D" method="_on_timer_timeout"]
 [connection signal="timeout" from="CharacterBody2D/coldown timer" to="CharacterBody2D" method="_on_coldown_timer_timeout"]
+=======
+[node name="WaveSpawner" type="Node2D" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("9_bk32q")
+player = NodePath("../CharacterBody2D")
+
+[node name="Enemy" parent="WaveSpawner" node_paths=PackedStringArray("player") instance=ExtResource("3_7essg")]
+position = Vector2(171824, -79007)
+scale = Vector2(0.5, 0.5)
+player = NodePath("../../CharacterBody2D")
+
+[node name="spitter" parent="WaveSpawner" instance=ExtResource("10_bk32q")]
+position = Vector2(411, -563)
