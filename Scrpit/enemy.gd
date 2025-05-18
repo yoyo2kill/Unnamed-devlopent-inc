@@ -29,7 +29,7 @@ func _on_timer_timeout():
 
 func process_fire(delta):
 	if on_fire:
-		fire_timer += 0
+		fire_timer += delta
 		if fire_timer >= fire_duration:
 			on_fire = false
 			fire_timer = 0.0
@@ -40,7 +40,7 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area is Fireball:
 		on_fire = true
 		fire_timer = 0.0
-		enemy_health.value -= 1
+		enemy_health.value -= 20
 
 func process_health_check(delta):
 	if enemy_health.value <= 0:

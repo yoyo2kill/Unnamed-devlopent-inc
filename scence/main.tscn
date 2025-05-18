@@ -20,20 +20,6 @@ position = Vector2(12, -89)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 
-[node name="Timer" type="Timer" parent="CharacterBody2D"]
-wait_time = 0.2
-one_shot = true
-
-[node name="coldown timer" type="Timer" parent="CharacterBody2D"]
-wait_time = 2.0
-one_shot = true
-
-[node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_7essg")]
-position = Vector2(683, -144)
-scale = Vector2(0.5, 0.5)
-player = NodePath("../CharacterBody2D")
-fire_damge = 1.0
-=======
 [node name="Panel" type="Panel" parent="CharacterBody2D/Camera2D"]
 offset_left = 399.0
 offset_top = -301.0
@@ -100,14 +86,10 @@ offset_right = 499.0
 offset_bottom = -168.0
 scale = Vector2(0.4, 0.4)
 
-
 [node name="Area2D" parent="." instance=ExtResource("5_qj2y4")]
 position = Vector2(-499, -404)
 scale = Vector2(3, 3)
 
-[connection signal="timeout" from="CharacterBody2D/Timer" to="CharacterBody2D" method="_on_timer_timeout"]
-[connection signal="timeout" from="CharacterBody2D/coldown timer" to="CharacterBody2D" method="_on_coldown_timer_timeout"]
-=======
 [node name="WaveSpawner" type="Node2D" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("9_bk32q")
 player = NodePath("../CharacterBody2D")
