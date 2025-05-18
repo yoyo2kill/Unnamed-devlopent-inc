@@ -86,6 +86,13 @@ offset_right = 499.0
 offset_bottom = -168.0
 scale = Vector2(0.4, 0.4)
 
+[node name="Timer" type="Timer" parent="CharacterBody2D"]
+wait_time = 0.2
+one_shot = true
+
+[node name="coldown timer" type="Timer" parent="CharacterBody2D"]
+one_shot = true
+
 [node name="Area2D" parent="." instance=ExtResource("5_qj2y4")]
 position = Vector2(-499, -404)
 scale = Vector2(3, 3)
@@ -101,3 +108,6 @@ player = NodePath("../../CharacterBody2D")
 
 [node name="spitter" parent="WaveSpawner" instance=ExtResource("10_bk32q")]
 position = Vector2(411, -563)
+
+[connection signal="timeout" from="CharacterBody2D/Timer" to="CharacterBody2D" method="_on_timer_timeout"]
+[connection signal="timeout" from="CharacterBody2D/coldown timer" to="CharacterBody2D" method="_on_coldown_timer_timeout"]
