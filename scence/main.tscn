@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://vc6lmjo2smpw"]
+[gd_scene load_steps=17 format=3 uid="uid://vc6lmjo2smpw"]
 
 [ext_resource type="PackedScene" uid="uid://o8wcs6qgym68" path="res://scence/player.tscn" id="1_tt04m"]
 [ext_resource type="PackedScene" uid="uid://n1gdfyptt3xx" path="res://scence/enemy.tscn" id="3_7essg"]
@@ -23,6 +23,9 @@ radius = 62.6498
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b580w"]
 size = Vector2(654, 67)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hh3jc"]
+size = Vector2(112, 302)
 
 [node name="Node2D" type="Node2D"]
 
@@ -183,7 +186,7 @@ region_enabled = true
 region_rect = Rect2(833.902, 448.592, 190.733, 136.108)
 
 [node name="Restaurant-spriteTile7" type="Sprite2D" parent="Node"]
-z_index = -100
+z_index = -1000
 position = Vector2(-644, 324)
 scale = Vector2(5, 5)
 texture = ExtResource("10_4rajj")
@@ -199,7 +202,7 @@ region_enabled = true
 region_rect = Rect2(833.902, 383.434, 184.898, 201.267)
 
 [node name="Restaurant-spriteTile" type="Sprite2D" parent="Node"]
-z_index = -100
+z_index = -1000
 z_as_relative = false
 position = Vector2(-652, -486)
 scale = Vector2(5, 5)
@@ -207,11 +210,368 @@ texture = ExtResource("10_4rajj")
 region_enabled = true
 region_rect = Rect2(444, 381.284, 257.466, 194.916)
 
+[node name="Restaurant-spriteTile" type="Sprite2D" parent="Node/Restaurant-spriteTile"]
+z_index = -99
+z_as_relative = false
+position = Vector2(178.4, -70.8)
+texture = ExtResource("10_4rajj")
+region_enabled = true
+region_rect = Rect2(542.927, 381.284, 98.783, 53.6051)
+
+[node name="Restaurant-spriteTile3" type="Sprite2D" parent="Node/Restaurant-spriteTile"]
+z_index = -99
+z_as_relative = false
+position = Vector2(-59, 96.8)
+texture = ExtResource("10_4rajj")
+region_enabled = true
+region_rect = Rect2(720.796, 482.795, 26.4119, 28.7459)
+
+[node name="Restaurant-spriteTile4" type="Sprite2D" parent="Node/Restaurant-spriteTile"]
+z_index = -99
+z_as_relative = false
+position = Vector2(-8.8, 108.4)
+texture = ExtResource("10_4rajj")
+region_enabled = true
+region_rect = Rect2(720.796, 482.795, 26.4119, 28.7459)
+
+[node name="Restaurant-spriteTile5" type="Sprite2D" parent="Node/Restaurant-spriteTile"]
+z_index = -99
+z_as_relative = false
+position = Vector2(-55.6, 154.4)
+texture = ExtResource("10_4rajj")
+region_enabled = true
+region_rect = Rect2(720.796, 482.795, 26.4119, 28.7459)
+
+[node name="Restaurant-spriteTile6" type="Sprite2D" parent="Node/Restaurant-spriteTile"]
+z_index = -99
+z_as_relative = false
+position = Vector2(15.2, 161.8)
+texture = ExtResource("10_4rajj")
+region_enabled = true
+region_rect = Rect2(720.796, 482.795, 26.4119, 28.7459)
+
+[node name="Restaurant-spriteTile38" type="Sprite2D" parent="Node/Restaurant-spriteTile"]
+z_index = -50
+z_as_relative = false
+position = Vector2(296.4, -67.6)
+texture = ExtResource("10_4rajj")
+region_enabled = true
+region_rect = Rect2(675.492, 394.223, 23.2863, 29.3045)
+
+[node name="Restaurant-spriteTile7" type="Sprite2D" parent="Node/Restaurant-spriteTile"]
+z_index = -99
+z_as_relative = false
+position = Vector2(52.6, 116)
+texture = ExtResource("10_4rajj")
+region_enabled = true
+region_rect = Rect2(720.796, 482.795, 26.4119, 28.7459)
+
+[node name="Restaurant-spriteTile8" type="Sprite2D" parent="Node/Restaurant-spriteTile"]
+z_index = -100
+z_as_relative = false
+position = Vector2(80, 164)
+texture = ExtResource("10_4rajj")
+region_enabled = true
+region_rect = Rect2(720.796, 482.795, 26.4119, 28.7459)
+
+[node name="Restaurant-spriteTile9" type="Sprite2D" parent="Node/Restaurant-spriteTile"]
+z_index = -99
+z_as_relative = false
+position = Vector2(47, 106.4)
+texture = ExtResource("10_4rajj")
+region_enabled = true
+region_rect = Rect2(738.71, 437.853, 7.45013, 6.30499)
+
+[node name="Restaurant-spriteTile10" type="Sprite2D" parent="Node/Restaurant-spriteTile"]
+z_index = -99
+z_as_relative = false
+position = Vector2(60.4, 110)
+texture = ExtResource("10_4rajj")
+region_enabled = true
+region_rect = Rect2(738.71, 437.853, 7.45013, 6.30499)
+
+[node name="Restaurant-spriteTile11" type="Sprite2D" parent="Node/Restaurant-spriteTile"]
+z_index = -99
+z_as_relative = false
+position = Vector2(-16, 101.8)
+texture = ExtResource("10_4rajj")
+region_enabled = true
+region_rect = Rect2(738.71, 437.853, 7.45013, 6.30499)
+
+[node name="Restaurant-spriteTile12" type="Sprite2D" parent="Node/Restaurant-spriteTile"]
+z_index = -99
+z_as_relative = false
+position = Vector2(-1.8, 103.4)
+texture = ExtResource("10_4rajj")
+region_enabled = true
+region_rect = Rect2(738.71, 437.853, 7.45013, 6.30499)
+
+[node name="Restaurant-spriteTile13" type="Sprite2D" parent="Node/Restaurant-spriteTile"]
+z_index = -99
+z_as_relative = false
+position = Vector2(-61.4, 88.6)
+texture = ExtResource("10_4rajj")
+region_enabled = true
+region_rect = Rect2(738.71, 437.853, 7.45013, 6.30499)
+
+[node name="Restaurant-spriteTile14" type="Sprite2D" parent="Node/Restaurant-spriteTile"]
+z_index = -99
+z_as_relative = false
+position = Vector2(15.8, 151.4)
+texture = ExtResource("10_4rajj")
+region_enabled = true
+region_rect = Rect2(738.71, 437.853, 7.45013, 6.30499)
+
+[node name="Restaurant-spriteTile15" type="Sprite2D" parent="Node/Restaurant-spriteTile"]
+z_index = -99
+z_as_relative = false
+position = Vector2(75.6, 154.4)
+texture = ExtResource("10_4rajj")
+region_enabled = true
+region_rect = Rect2(738.71, 437.853, 7.45013, 6.30499)
+
+[node name="Restaurant-spriteTile16" type="Sprite2D" parent="Node/Restaurant-spriteTile"]
+z_index = -99
+z_as_relative = false
+position = Vector2(86.4, 157.8)
+texture = ExtResource("10_4rajj")
+region_enabled = true
+region_rect = Rect2(738.71, 437.853, 7.45013, 6.30499)
+
+[node name="Restaurant-spriteTile29" type="Sprite2D" parent="Node/Restaurant-spriteTile"]
+z_index = -101
+z_as_relative = false
+position = Vector2(79.6, 147.2)
+texture = ExtResource("10_4rajj")
+region_enabled = true
+region_rect = Rect2(719.778, 451.598, 12.2846, 23.7891)
+
+[node name="Restaurant-spriteTile31" type="Sprite2D" parent="Node/Restaurant-spriteTile"]
+z_index = -101
+z_as_relative = false
+position = Vector2(94.8, 159)
+texture = ExtResource("10_4rajj")
+region_enabled = true
+region_rect = Rect2(740.307, 450.499, 10.7023, 26.6072)
+
+[node name="Restaurant-spriteTile37" type="Sprite2D" parent="Node/Restaurant-spriteTile"]
+z_index = -101
+z_as_relative = false
+position = Vector2(-41.6, 154.4)
+texture = ExtResource("10_4rajj")
+region_enabled = true
+region_rect = Rect2(740.307, 450.499, 10.7023, 26.6072)
+
+[node name="Restaurant-spriteTile32" type="Sprite2D" parent="Node/Restaurant-spriteTile"]
+z_index = -101
+z_as_relative = false
+position = Vector2(66.8, 112.4)
+texture = ExtResource("10_4rajj")
+region_enabled = true
+region_rect = Rect2(740.307, 450.499, 10.7023, 26.6072)
+
+[node name="Restaurant-spriteTile33" type="Sprite2D" parent="Node/Restaurant-spriteTile"]
+z_index = -101
+z_as_relative = false
+position = Vector2(-23, 107)
+texture = ExtResource("10_4rajj")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(740.307, 450.499, 10.7023, 26.6072)
+
+[node name="Restaurant-spriteTile34" type="Sprite2D" parent="Node/Restaurant-spriteTile"]
+z_index = -101
+z_as_relative = false
+position = Vector2(-73.2, 96)
+texture = ExtResource("10_4rajj")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(740.307, 450.499, 10.7023, 26.6072)
+
+[node name="Restaurant-spriteTile35" type="Sprite2D" parent="Node/Restaurant-spriteTile"]
+z_index = -101
+z_as_relative = false
+position = Vector2(27.2, 149)
+texture = ExtResource("10_4rajj")
+region_enabled = true
+region_rect = Rect2(753.321, 451.173, 13.0085, 25.4468)
+
+[node name="Restaurant-spriteTile36" type="Sprite2D" parent="Node/Restaurant-spriteTile"]
+z_index = -101
+z_as_relative = false
+position = Vector2(42, 102)
+texture = ExtResource("10_4rajj")
+region_enabled = true
+region_rect = Rect2(753.321, 451.173, 13.0085, 25.4468)
+
+[node name="Restaurant-spriteTile30" type="Sprite2D" parent="Node/Restaurant-spriteTile"]
+z_index = -101
+z_as_relative = false
+position = Vector2(6, 148.6)
+skew = -0.10472
+texture = ExtResource("10_4rajj")
+region_enabled = true
+region_rect = Rect2(719.778, 451.598, 12.2846, 23.7891)
+
+[node name="Restaurant-spriteTile17" type="Sprite2D" parent="Node/Restaurant-spriteTile"]
+z_index = -99
+z_as_relative = false
+position = Vector2(78.6, 161.4)
+texture = ExtResource("10_4rajj")
+region_enabled = true
+region_rect = Rect2(738.71, 437.853, 7.45013, 6.30499)
+
+[node name="Restaurant-spriteTile18" type="Sprite2D" parent="Node/Restaurant-spriteTile"]
+z_index = -99
+z_as_relative = false
+position = Vector2(-62.4, 142.8)
+texture = ExtResource("10_4rajj")
+region_enabled = true
+region_rect = Rect2(719.88, 431.229, 6.36096, 13.0807)
+
+[node name="Restaurant-spriteTile19" type="Sprite2D" parent="Node/Restaurant-spriteTile"]
+z_index = -99
+z_as_relative = false
+position = Vector2(-8.6, 92)
+texture = ExtResource("10_4rajj")
+region_enabled = true
+region_rect = Rect2(719.88, 431.229, 6.36096, 13.0807)
+
+[node name="Restaurant-spriteTile20" type="Sprite2D" parent="Node/Restaurant-spriteTile"]
+z_index = -99
+z_as_relative = false
+position = Vector2(-0.600002, 103.2)
+rotation = -1.14319
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("10_4rajj")
+region_enabled = true
+region_rect = Rect2(706.664, 479.612, 5.62164, 6.71243)
+
+[node name="Restaurant-spriteTile21" type="Sprite2D" parent="Node/Restaurant-spriteTile"]
+z_index = -99
+z_as_relative = false
+position = Vector2(-15.2, 100)
+rotation = -5.69152
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("10_4rajj")
+region_enabled = true
+region_rect = Rect2(706.664, 479.612, 5.62164, 6.71243)
+
+[node name="Restaurant-spriteTile22" type="Sprite2D" parent="Node/Restaurant-spriteTile"]
+z_index = -99
+z_as_relative = false
+position = Vector2(-9, 106.8)
+rotation = -0.785398
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("10_4rajj")
+region_enabled = true
+region_rect = Rect2(706.664, 479.612, 5.62164, 6.71243)
+
+[node name="Restaurant-spriteTile23" type="Sprite2D" parent="Node/Restaurant-spriteTile"]
+z_index = -99
+z_as_relative = false
+position = Vector2(-61, 88.4)
+rotation = -0.785398
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("10_4rajj")
+region_enabled = true
+region_rect = Rect2(706.664, 479.612, 5.62164, 6.71243)
+
+[node name="Restaurant-spriteTile24" type="Sprite2D" parent="Node/Restaurant-spriteTile"]
+z_index = -99
+z_as_relative = false
+position = Vector2(60.8, 109.8)
+rotation = -0.785398
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("10_4rajj")
+region_enabled = true
+region_rect = Rect2(706.664, 479.612, 5.62164, 6.71243)
+
+[node name="Restaurant-spriteTile25" type="Sprite2D" parent="Node/Restaurant-spriteTile"]
+z_index = -99
+z_as_relative = false
+position = Vector2(79.4, 161)
+rotation = -0.785398
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("10_4rajj")
+region_enabled = true
+region_rect = Rect2(706.664, 479.612, 5.62164, 6.71243)
+
+[node name="Restaurant-spriteTile26" type="Sprite2D" parent="Node/Restaurant-spriteTile"]
+z_index = -99
+z_as_relative = false
+position = Vector2(75.6, 154.6)
+rotation = 1.12923
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("10_4rajj")
+region_enabled = true
+region_rect = Rect2(706.664, 479.612, 5.62164, 6.71243)
+
+[node name="Restaurant-spriteTile27" type="Sprite2D" parent="Node/Restaurant-spriteTile"]
+z_index = -99
+z_as_relative = false
+position = Vector2(-49.6, 149.6)
+rotation = 1.12923
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("10_4rajj")
+region_enabled = true
+region_rect = Rect2(706.664, 479.612, 5.62164, 6.71243)
+
+[node name="Restaurant-spriteTile28" type="Sprite2D" parent="Node/Restaurant-spriteTile"]
+z_index = -99
+z_as_relative = false
+position = Vector2(15.8, 150.6)
+rotation = 1.12923
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("10_4rajj")
+region_enabled = true
+region_rect = Rect2(706.664, 479.612, 5.62164, 6.71243)
+
+[node name="Restaurant-spriteTile2" type="Sprite2D" parent="Node/Restaurant-spriteTile"]
+z_index = -99
+z_as_relative = false
+position = Vector2(264.8, -67)
+texture = ExtResource("10_4rajj")
+flip_h = true
+flip_v = true
+region_enabled = true
+region_rect = Rect2(542.927, 381.284, 95.562, 53.6051)
+
 [node name="StaticBody2D7" type="StaticBody2D" parent="Node"]
 position = Vector2(-553, -190)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node/StaticBody2D7"]
 position = Vector2(-12, 12)
+rotation = 1.5708
+shape = SubResource("CircleShape2D_47hqa")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Node/StaticBody2D7"]
+position = Vector2(-145, 229)
+rotation = 1.5708
+shape = SubResource("CircleShape2D_47hqa")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Node/StaticBody2D7"]
+position = Vector2(164, 266)
+rotation = 1.5708
+shape = SubResource("CircleShape2D_47hqa")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Node/StaticBody2D7"]
+position = Vector2(-392, 173)
+rotation = 1.5708
+shape = SubResource("CircleShape2D_47hqa")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Node/StaticBody2D7"]
+position = Vector2(-377, 462)
+rotation = 1.5708
+shape = SubResource("CircleShape2D_47hqa")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Node/StaticBody2D7"]
+position = Vector2(-23, 495)
+rotation = 1.5708
+shape = SubResource("CircleShape2D_47hqa")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Node/StaticBody2D7"]
+position = Vector2(300, 511)
 rotation = 1.5708
 shape = SubResource("CircleShape2D_47hqa")
 
@@ -282,6 +642,26 @@ texture = ExtResource("10_4rajj")
 offset = Vector2(90, 0)
 region_enabled = true
 region_rect = Rect2(681.95, 492.24, 22.4851, 67.6183)
+
+[node name="Restaurant-spriteTile2" type="Sprite2D" parent="Node/Node"]
+position = Vector2(398, -201)
+scale = Vector2(5, 5)
+texture = ExtResource("10_4rajj")
+offset = Vector2(90, 0)
+region_enabled = true
+region_rect = Rect2(681.95, 492.24, 22.4851, 67.6183)
+
+[node name="StaticBody2D15" type="StaticBody2D" parent="Node"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/StaticBody2D15"]
+position = Vector2(846, -190)
+shape = SubResource("RectangleShape2D_hh3jc")
+
+[node name="StaticBody2D16" type="StaticBody2D" parent="Node"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/StaticBody2D16"]
+position = Vector2(835, 308)
+shape = SubResource("RectangleShape2D_hh3jc")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
