@@ -27,7 +27,7 @@ size = Vector2(654, 67)
 [node name="Node2D" type="Node2D"]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_tt04m")]
-position = Vector2(35, -153)
+position = Vector2(14, 49)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 
@@ -146,14 +146,6 @@ player = NodePath("../../CharacterBody2D")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node/StaticBody2D2"]
 position = Vector2(842, 308.5)
 shape = SubResource("RectangleShape2D_bk32q")
-
-[node name="Restaurant-spriteTile" type="Sprite2D" parent="Node/StaticBody2D2"]
-position = Vector2(391, 288)
-scale = Vector2(5, 5)
-texture = ExtResource("10_4rajj")
-offset = Vector2(90, 0)
-region_enabled = true
-region_rect = Rect2(681.95, 492.24, 22.4851, 67.6183)
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="Node"]
 
@@ -281,13 +273,24 @@ shape = SubResource("RectangleShape2D_bk32q")
 position = Vector2(-788, -577.5)
 shape = SubResource("RectangleShape2D_b580w")
 
+[node name="Node" type="Node" parent="Node"]
+
+[node name="Restaurant-spriteTile" type="Sprite2D" parent="Node/Node"]
+position = Vector2(391, 288)
+scale = Vector2(5, 5)
+texture = ExtResource("10_4rajj")
+offset = Vector2(90, 0)
+region_enabled = true
+region_rect = Rect2(681.95, 492.24, 22.4851, 67.6183)
+
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 z_index = -1000
 z_as_relative = false
-offset_left = -3905.0
-offset_top = -4672.0
-offset_right = 5535.0
-offset_bottom = 5053.0
+offset_left = -3939.0
+offset_top = -4544.0
+offset_right = 5501.0
+offset_bottom = 5181.0
 color = Color(0, 0, 0, 1)
 
 [connection signal="timeout" from="CharacterBody2D/Camera2D/Panel2/Panel cool" to="CharacterBody2D/Camera2D/Panel2" method="_on_panel_cool_timeout"]
