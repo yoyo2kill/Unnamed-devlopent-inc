@@ -1,16 +1,22 @@
-[gd_scene load_steps=17 format=3 uid="uid://vc6lmjo2smpw"]
+[gd_scene load_steps=23 format=3 uid="uid://vc6lmjo2smpw"]
 
+[ext_resource type="Script" uid="uid://dqkoqom1eolf" path="res://scence/main.gd" id="1_b580w"]
 [ext_resource type="PackedScene" uid="uid://o8wcs6qgym68" path="res://scence/player.tscn" id="1_tt04m"]
 [ext_resource type="PackedScene" uid="uid://n1gdfyptt3xx" path="res://scence/enemy.tscn" id="3_7essg"]
 [ext_resource type="Script" uid="uid://cexv8h5jjb4mr" path="res://Scrpit/panel.gd" id="3_qj2y4"]
 [ext_resource type="Script" uid="uid://c52qr1v42tdkw" path="res://Scrpit/panel_2.gd" id="4_47hqa"]
 [ext_resource type="PackedScene" uid="uid://crt0i8ojonq0r" path="res://control.tscn" id="6_qj2y4"]
 [ext_resource type="PackedScene" uid="uid://bdvupl28gv70r" path="res://heart.tscn" id="6_sr2ul"]
+[ext_resource type="PackedScene" uid="uid://ctsxen00p0gs" path="res://tooltip4.tscn" id="7_8e33y"]
+[ext_resource type="PackedScene" uid="uid://lk0g2djv2eik" path="res://Tooltip2.tscn" id="8_skjli"]
 [ext_resource type="PackedScene" uid="uid://cfchafbrsl88s" path="res://scence/duplicator.tscn" id="9_4rajj"]
 [ext_resource type="Script" uid="uid://bgxpjvaqluy6t" path="res://Scrpit/spawner.gd" id="9_bk32q"]
+[ext_resource type="PackedScene" uid="uid://fcc3ikhmetr2" path="res://tooltip3.tscn" id="9_tsqyq"]
 [ext_resource type="Texture2D" uid="uid://60enuq2xioj" path="res://Assets/Restaurant-Sprite_tile.png" id="10_4rajj"]
 [ext_resource type="PackedScene" uid="uid://b7yancvguxpsh" path="res://scence/speed_enemy.tscn" id="10_b580w"]
 [ext_resource type="PackedScene" uid="uid://hb1yvwkstoa7" path="res://Scrpit/spitter.tscn" id="10_bk32q"]
+[ext_resource type="PackedScene" uid="uid://cwgdnb50xw3jf" path="res://tooltip1.tscn" id="13_hh3jc"]
+[ext_resource type="AudioStream" uid="uid://ulaa6r0u4w6h" path="res://Untitled Development Team.mp3" id="17_nvhh0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bk32q"]
 size = Vector2(99, 234)
@@ -28,6 +34,7 @@ size = Vector2(654, 67)
 size = Vector2(112, 302)
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_b580w")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_tt04m")]
 position = Vector2(14, 49)
@@ -114,6 +121,24 @@ one_shot = true
 [node name="coldown timer2" type="Timer" parent="CharacterBody2D"]
 one_shot = true
 
+[node name="Following UI" type="Control" parent="CharacterBody2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Tooltip4" parent="CharacterBody2D/Following UI" instance=ExtResource("7_8e33y")]
+visible = false
+
+[node name="Tooltip1" parent="CharacterBody2D/Following UI" instance=ExtResource("13_hh3jc")]
+visible = false
+
+[node name="Tooltip2" parent="CharacterBody2D/Following UI" instance=ExtResource("8_skjli")]
+visible = false
+
+[node name="Tooltip3" parent="CharacterBody2D/Following UI" instance=ExtResource("9_tsqyq")]
+visible = false
+
 [node name="WaveSpawner" type="Node2D" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("9_bk32q")
 player = NodePath("../CharacterBody2D")
@@ -121,7 +146,9 @@ round_1_enemy_types = Array[String](["Enemy"])
 round_2_enemy_types = Array[String](["Enemy", "Enemy_spitter"])
 round_2_enemy_counts = Array[int]([3, 2])
 round_3_enemy_types = Array[String](["Enemy", "Enemy_spitter", "SPEED_ENEMY"])
-round_3_enemy_counts = Array[int]([5, 3, 1])
+round_3_enemy_counts = Array[int]([5, 1, 5])
+round_4_enemy_types = Array[String](["Enemy", "Enemy_spitter", "Enemy_Duplicator", "SPEED_ENEMY"])
+round_4_enemy_counts = Array[int]([3, 3, 2, 5])
 
 [node name="Enemy" parent="WaveSpawner" node_paths=PackedStringArray("player") instance=ExtResource("3_7essg")]
 position = Vector2(171824, -79007)
@@ -666,11 +693,16 @@ shape = SubResource("RectangleShape2D_hh3jc")
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -1000
 z_as_relative = false
-offset_left = -3939.0
-offset_top = -4544.0
-offset_right = 5501.0
-offset_bottom = 5181.0
+offset_left = -4058.0
+offset_top = -4579.0
+offset_right = 5382.0
+offset_bottom = 5146.0
 color = Color(0, 0, 0, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_nvhh0")
+autoplay = true
+parameters/looping = true
 
 [connection signal="timeout" from="CharacterBody2D/Camera2D/Panel2/Panel cool" to="CharacterBody2D/Camera2D/Panel2" method="_on_panel_cool_timeout"]
 [connection signal="timeout" from="CharacterBody2D/Timer2" to="CharacterBody2D" method="_on_timer_timeout"]

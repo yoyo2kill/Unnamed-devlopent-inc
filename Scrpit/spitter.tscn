@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cimkkfracxvav" path="res://Scrpit/spitter.gd" id="1_dl3ug"]
 [ext_resource type="PackedScene" uid="uid://dwtmi1ma7ky1j" path="res://scence/bullet_scene.tscn" id="2_0ywxs"]
-[ext_resource type="Texture2D" uid="uid://djbxfm3lrid5o" path="res://icon.svg" id="2_g3v83"]
+[ext_resource type="Texture2D" uid="uid://b8nrhot0jy7wt" path="res://pixil-frame-0.png" id="3_0ywxs"]
 [ext_resource type="Texture2D" uid="uid://dfd0xvgbxvas8" path="res://Assets/Mana/black.png" id="4_0ywxs"]
 [ext_resource type="Texture2D" uid="uid://bt0ywbb1fx0sq" path="res://Assets/Mana/green.png" id="5_5o48u"]
 [ext_resource type="Script" uid="uid://c4u2ih3na56yi" path="res://Scrpit/enemy health.gd" id="6_2ijd0"]
@@ -25,7 +25,8 @@ bullet_scene = ExtResource("2_0ywxs")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.433091, 0.655275, 0, 1)
-texture = ExtResource("2_g3v83")
+scale = Vector2(2, 2)
+texture = ExtResource("3_0ywxs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 1.5)
