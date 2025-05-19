@@ -1,7 +1,7 @@
 extends Node2D
 
 # Lightning spell properties
-@export var damage = 40
+@export var damage = 300
 @export var max_targets = 8
 @export var lightning_color: Color = Color(0.5, 0.8, 1.0, 0.8)
 @export var lightning_width: float = 5.0

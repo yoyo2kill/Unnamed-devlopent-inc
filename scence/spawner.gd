@@ -8,8 +8,8 @@ extends Node2D
 
 func _ready():
 	print("Spawner initialized")
-	setup_spawn(original_enemy, "Enemy", num_enemies_to_spawn, 5.0, 60.0, "spawn_enemies")
-	setup_spawn(original_duplicate, "Duplicate", num_duplicates_to_spawn, 7.0, 75.0, "spawn_duplicates") # Different delays for example
+	setup_spawn(original_enemy, "Enemy", num_enemies_to_spawn, 50.0, 60.0, "spawn_enemies")
+	setup_spawn(original_duplicate, "Duplicate", num_duplicates_to_spawn, 70.0, 75.0, "spawn_duplicates") # Different delays for example
 
 func setup_spawn(template_node: Node2D, object_name: String, spawn_count: int, initial_delay: float, repeat_delay: float, spawn_function_name: String):
 	if is_instance_valid(template_node):

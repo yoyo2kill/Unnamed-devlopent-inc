@@ -5,9 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://n1gdfyptt3xx" path="res://scence/enemy.tscn" id="3_7essg"]
 [ext_resource type="Script" uid="uid://cexv8h5jjb4mr" path="res://scence/panel.gd" id="3_sr2ul"]
 [ext_resource type="Script" uid="uid://c52qr1v42tdkw" path="res://scence/panel_2.gd" id="4_qj2y4"]
-[ext_resource type="Script" uid="uid://bgxpjvaqluy6t" path="res://scence/spawner.gd" id="4_shc2a"]
 [ext_resource type="PackedScene" uid="uid://duf7pafqgm6jm" path="res://scence/door.tscn" id="5_qj2y4"]
 [ext_resource type="PackedScene" uid="uid://cfchafbrsl88s" path="res://duplicator.tscn" id="8_nmbla"]
+[ext_resource type="PackedScene" uid="uid://b3i6y3lolbb1i" path="res://bossmob.tscn" id="9_47hqa"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -76,15 +76,16 @@ text = "Wave 1"
 position = Vector2(-499, -404)
 scale = Vector2(3, 3)
 
-[node name="WaveSpawner" type="Node2D" parent="." node_paths=PackedStringArray("player")]
-script = ExtResource("4_shc2a")
+[node name="Bossmob" parent="." node_paths=PackedStringArray("player") instance=ExtResource("9_47hqa")]
+position = Vector2(725, 61)
+scale = Vector2(2, 2)
 player = NodePath("../CharacterBody2D")
 
-[node name="Enemy" parent="WaveSpawner" node_paths=PackedStringArray("player") instance=ExtResource("3_7essg")]
+[node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_7essg")]
 position = Vector2(106672, -51359)
 scale = Vector2(0.5, 0.5)
-player = NodePath("../../CharacterBody2D")
+player = NodePath("../CharacterBody2D")
 
-[node name="Duplicator" parent="WaveSpawner" node_paths=PackedStringArray("player") instance=ExtResource("8_nmbla")]
+[node name="Duplicator" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_nmbla")]
 position = Vector2(106434, -51383)
-player = NodePath("../../CharacterBody2D")
+player = NodePath("../CharacterBody2D")
