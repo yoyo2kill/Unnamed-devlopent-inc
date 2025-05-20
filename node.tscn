@@ -1,6 +1,148 @@
-[gd_scene load_steps=7 format=3 uid="uid://6x3l1l2j03a0"]
+[gd_scene load_steps=13 format=3 uid="uid://6x3l1l2j03a0"]
 
+[ext_resource type="Script" uid="uid://b3x3a14wec3sb" path="res://node.gd" id="1_112p8"]
 [ext_resource type="Texture2D" uid="uid://60enuq2xioj" path="res://Assets/Restaurant-Sprite_tile.png" id="1_sy5k4"]
+[ext_resource type="Texture2D" uid="uid://bujlo0lt7qrve" path="res://496513109_1440114233813620_2263485577214846380_n.png" id="2_j2q8x"]
+
+[sub_resource type="Animation" id="Animation_112p8"]
+resource_name = "Boss"
+length = 19.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(2.5, 2.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3.01),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Label:text")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3, 7, 11, 15),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": ["SO YOUVE defeated 
+MY MINONS", "SO YOUVE defeated 
+MY MINONS", "no matter
+they were weak
+", "i shall deal with
+you myself", "first a change
+of scenery"]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Label:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 3.01),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_e2u21"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Label:text")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["SO YOUVE defeated 
+MY MINONS"]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Label:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bss38"]
+_data = {
+&"Boss": SubResource("Animation_112p8"),
+&"RESET": SubResource("Animation_e2u21")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j2q8x"]
 size = Vector2(99, 234)
@@ -17,15 +159,17 @@ size = Vector2(654, 67)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tda05"]
 size = Vector2(112, 302)
 
+[sub_resource type="LabelSettings" id="LabelSettings_tda05"]
+outline_size = 7
+outline_color = Color(0, 0, 0, 1)
+
 [node name="Node" type="Node"]
+script = ExtResource("1_112p8")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+libraries = {
+&"": SubResource("AnimationLibrary_bss38")
+}
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(330, -314)
@@ -550,3 +694,30 @@ shape = SubResource("RectangleShape2D_tda05")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node/StaticBody2D16"]
 position = Vector2(835, 308)
 shape = SubResource("RectangleShape2D_tda05")
+
+[node name="49651310914401142338136202263485577214846380N" type="Sprite2D" parent="."]
+position = Vector2(336, -300)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_j2q8x")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = 122.0
+offset_top = -350.0
+offset_right = 288.0
+offset_bottom = -301.0
+text = "SO YOUVE defeated 
+MY MINONS"
+label_settings = SubResource("LabelSettings_tda05")
+uppercase = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+z_index = -2
+offset_left = 117.0
+offset_top = -356.0
+offset_right = 287.0
+offset_bottom = -293.0
+color = Color(0, 0, 0, 1)
+
+[connection signal="animation_changed" from="AnimationPlayer" to="." method="_on_animation_player_animation_changed"]

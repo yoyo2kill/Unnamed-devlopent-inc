@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" uid="uid://ur7s8g1sml64" path="res://Bossmob.gd" id="1_4tl63"]
 [ext_resource type="PackedScene" uid="uid://n1gdfyptt3xx" path="res://scence/enemy.tscn" id="2_cvgab"]
-[ext_resource type="Texture2D" uid="uid://djbxfm3lrid5o" path="res://icon.svg" id="3_abol3"]
 [ext_resource type="PackedScene" uid="uid://cfchafbrsl88s" path="res://scence/duplicator.tscn" id="3_cvgab"]
 [ext_resource type="Script" uid="uid://cytbaoaxrnmcx" path="res://Scrpit/KillboxEnemy.gd" id="4_2ycmh"]
 [ext_resource type="PackedScene" uid="uid://b7yancvguxpsh" path="res://scence/speed_enemy.tscn" id="4_cvgab"]
 [ext_resource type="PackedScene" uid="uid://hb1yvwkstoa7" path="res://Scrpit/spitter.tscn" id="5_abol3"]
 [ext_resource type="Script" uid="uid://dy0j7hueodkgu" path="res://Scrpit/hitbox.gd" id="5_lepxt"]
 [ext_resource type="Texture2D" uid="uid://dfd0xvgbxvas8" path="res://Assets/Mana/black.png" id="6_3bo12"]
+[ext_resource type="Texture2D" uid="uid://bujlo0lt7qrve" path="res://496513109_1440114233813620_2263485577214846380_n.png" id="6_cvgab"]
 [ext_resource type="Texture2D" uid="uid://bt0ywbb1fx0sq" path="res://Assets/Mana/green.png" id="7_5hcyk"]
 [ext_resource type="Script" uid="uid://c4u2ih3na56yi" path="res://Scrpit/enemy health.gd" id="8_apm56"]
 
@@ -34,8 +34,8 @@ spitter_scene = ExtResource("5_abol3")
 speed_scene = ExtResource("4_cvgab")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.988235, 0, 0, 1)
-texture = ExtResource("3_abol3")
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("6_cvgab")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_355ya")
