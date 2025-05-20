@@ -96,7 +96,7 @@ func take_damage(amount: float):
 		
 		if enemy_health.value <= 0:
 			# Last stand - spawn a bunch of enemies before dying
-			
+			get_tree().change_scene_to_file("res://You_win.tscn")
 			queue_free() # Remove the boss after it's defeated
 			
 

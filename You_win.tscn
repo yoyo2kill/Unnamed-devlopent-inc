@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://rgt65edvynlo"]
+
+[ext_resource type="Texture2D" uid="uid://beugd5kw6tdmt" path="res://trophy-pixel-art-with-sparkling-winner-cup-pixel-art-style_709240-255-removebg-preview.png" id="1_t20xw"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -145.0
+offset_top = -80.0
+offset_right = 1321.0
+offset_bottom = 773.0
+color = Color(0, 0.623529, 1, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1160.0
+offset_top = -265.0
+offset_right = -1160.0
+offset_bottom = -242.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+text = "YOU WIN"
+horizontal_alignment = 1
+
+[node name="Trophy-pixel-art-with-sparkling-winner-cup-pixel-art-style709240-255-removebg-preview" type="Sprite2D" parent="."]
+position = Vector2(536, 482)
+texture = ExtResource("1_t20xw")
