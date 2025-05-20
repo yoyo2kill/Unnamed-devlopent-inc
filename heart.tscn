@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdvupl28gv70r"]
+
+[ext_resource type="Script" uid="uid://dyfk8ejs0rlta" path="res://heart.gd" id="1_7p8dj"]
+[ext_resource type="Texture2D" uid="uid://dg5k5baflsj1n" path="res://Assets/brackeys_platformer_assets/2381669-6ade057fd7f23ced.webp" id="2_pembh"]
+
+[node name="heart" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.2, 0.2)
+script = ExtResource("1_7p8dj")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_pembh")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_pembh")
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_pembh")
+
+[node name="TextureRect4" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_pembh")
+
+[node name="TextureRect5" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_pembh")

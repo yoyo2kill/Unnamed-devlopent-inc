@@ -5,11 +5,23 @@ var ENEMY = preload("res://scence/enemy.tscn")
 var speed = 700
 var fireball_dir
 
+func _ready():
+	# Connect the area_entered signal if not connected in the editor
+	if not area_entered.is_connected(_on_area_entered):
+		area_entered.connect(_on_area_entered)
+
 func _process(delta):
-	# Direction is already normalized, so just multiply by speed and delta
+	# Move the fireball
 	position += fireball_dir * speed * delta
 
-func _on_area_entered(area) -> void:
-	if area is enemy_hitbox:
-		print("yay")
+# This is called when the fireball enters another area
+func _on_area_entered(area):
+	print("Area entered: ", area.name)
+	
+	# Check if the area is in the hitbox group
+	if area.is_in_group("enemy_hitbox"):
+		print("Hit enemy hitbox!")
 		queue_free()
+		
+		# Get the parent of the hitbox (usually the enemy itself)
+		

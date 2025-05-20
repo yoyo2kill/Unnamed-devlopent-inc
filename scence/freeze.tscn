@@ -1,0 +1,76 @@
+[gd_scene load_steps=11 format=3 uid="uid://bfb15xfgqolbo"]
+
+[ext_resource type="Script" uid="uid://dinl3r2w5b5oh" path="res://freeze.gd" id="1_tp685"]
+[ext_resource type="Script" uid="uid://dcndx1d0uyslm" path="res://Scrpit/collision_shape_2d.gd" id="3_k1c5r"]
+[ext_resource type="Texture2D" uid="uid://dt63vx1mb13yy" path="res://Assets/496511207_613947545030457_8486375170381550169_n.png" id="3_tp685"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tp685"]
+radius = 21.095
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2v8g"]
+atlas = ExtResource("3_tp685")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tlajp"]
+atlas = ExtResource("3_tp685")
+region = Rect2(100, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5b0u3"]
+atlas = ExtResource("3_tp685")
+region = Rect2(200, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6ptn"]
+atlas = ExtResource("3_tp685")
+region = Rect2(300, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_515yh"]
+atlas = ExtResource("3_tp685")
+region = Rect2(400, 0, 50, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cpsup"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2v8g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tlajp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5b0u3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o6ptn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_515yh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="freeze" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_tp685")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tp685")
+script = ExtResource("3_k1c5r")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="coldown timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+self_modulate = Color(0, 1, 1, 1)
+sprite_frames = SubResource("SpriteFrames_cpsup")
+autoplay = "default"
+frame_progress = 0.571547
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="coldown timer" to="." method="_on_coldown_timer_timeout"]
