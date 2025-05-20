@@ -96,8 +96,9 @@ func take_damage(amount: float):
 		
 		if enemy_health.value <= 0:
 			# Last stand - spawn a bunch of enemies before dying
-			spawn_enemies_around(6)  # More enemies as a last stand
+			
 			queue_free() # Remove the boss after it's defeated
+			
 
 func transition_to_phase(new_phase):
 	print("Boss transitioning to phase: ", new_phase)

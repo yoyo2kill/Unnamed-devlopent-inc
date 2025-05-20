@@ -150,6 +150,8 @@ round_3_enemy_types = Array[String](["Enemy", "Enemy_spitter", "SPEED_ENEMY"])
 round_3_enemy_counts = Array[int]([5, 1, 5])
 round_4_enemy_types = Array[String](["Enemy", "Enemy_spitter", "Enemy_Duplicator", "SPEED_ENEMY"])
 round_4_enemy_counts = Array[int]([3, 3, 2, 5])
+round_5_enemy_types = Array[String]([])
+round_5_enemy_counts = Array[String]([])
 
 [node name="Enemy" parent="WaveSpawner" node_paths=PackedStringArray("player") instance=ExtResource("3_7essg")]
 position = Vector2(171824, -79007)

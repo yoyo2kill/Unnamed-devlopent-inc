@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://cfchafbrsl88s"]
 
 [ext_resource type="Script" uid="uid://cpr8irgstk7o0" path="res://scence/duplicator.gd" id="1_574cd"]
-[ext_resource type="Texture2D" uid="uid://djbxfm3lrid5o" path="res://icon.svg" id="2_jge6b"]
+[ext_resource type="Texture2D" uid="uid://6t02lhxiasgm" path="res://pixil-frame-0 (3).png" id="2_a6yhg"]
 [ext_resource type="Script" uid="uid://cytbaoaxrnmcx" path="res://Scrpit/KillboxEnemy.gd" id="3_hxd6y"]
 [ext_resource type="Script" uid="uid://dy0j7hueodkgu" path="res://Scrpit/hitbox.gd" id="4_jhrj4"]
 [ext_resource type="Texture2D" uid="uid://dfd0xvgbxvas8" path="res://Assets/Mana/black.png" id="5_b5c2a"]
@@ -26,8 +26,8 @@ safe_margin = 0.001
 script = ExtResource("1_574cd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.988235, 0, 0, 1)
-texture = ExtResource("2_jge6b")
+scale = Vector2(2, 2)
+texture = ExtResource("2_a6yhg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_355ya")

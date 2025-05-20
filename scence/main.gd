@@ -44,5 +44,5 @@ func _process(delta: float) -> void:
 		Engine.time_scale = 0.0
 		tooltip_4_shown = true
 	if $CharacterBody2D/Camera2D/Panel2.wave_number == 5 and not tooltip_5_shown:
-		get_tree().change_scene_to_file("res://Hell.tscn")
+		get_tree().change_scene_to_file("res://node.tscn")
 		tooltip_5_shown = true

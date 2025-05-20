@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://fcc3ikhmetr2"]
+[gd_scene load_steps=3 format=3 uid="uid://fcc3ikhmetr2"]
 
 [ext_resource type="Script" uid="uid://blvi4o3gnawtk" path="res://canvas_layer.gd" id="1_1vpb3"]
+[ext_resource type="Texture2D" uid="uid://cliaegw07ymcs" path="res://pixil-frame-0-3.png" id="2_f8raj"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_1vpb3")
@@ -66,5 +67,10 @@ offset_right = 572.0
 offset_bottom = 497.0
 scale = Vector2(2, 2)
 text = "NEXT"
+
+[node name="Pixil-frame-0-3" type="Sprite2D" parent="."]
+position = Vector2(480, 294)
+scale = Vector2(4, 4)
+texture = ExtResource("2_f8raj")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

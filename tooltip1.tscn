@@ -64,7 +64,8 @@ offset_right = 806.0
 offset_bottom = 444.0
 text = "The fire ball is one of the most basic magic skills. 
 it deal low damage but then deals fire damage over time.
-PRESS Q TO ACTIVATE!!!"
+PRESS Q TO ACTIVATE!!!
+PRESS SPACE TO DASH!!!"
 horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="."]

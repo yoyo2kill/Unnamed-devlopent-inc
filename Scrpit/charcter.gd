@@ -50,7 +50,7 @@ func _input(event: InputEvent) -> void:
 			
 			
 			shoot_freeze()
-	if event.is_action_pressed("manapot") or (event is InputEventKey and event.keycode == KEY_B and event.pressed and not event.echo):
+	if event.is_action_pressed("manapot"):
 		try_fill_bar()
 		
 func try_fill_bar():

@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://lk0g2djv2eik"]
+[gd_scene load_steps=4 format=3 uid="uid://lk0g2djv2eik"]
 
 [ext_resource type="Script" uid="uid://blvi4o3gnawtk" path="res://canvas_layer.gd" id="1_qu2rw"]
+[ext_resource type="Texture2D" uid="uid://cc1p7ixmcr1hc" path="res://pixil-frame-0-3 (1).png" id="2_glwn4"]
+[ext_resource type="Texture2D" uid="uid://253wqrecnixx" path="res://pixil-frame-0-4.png" id="3_gv55y"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_qu2rw")
@@ -41,14 +43,6 @@ offset_right = 730.0
 offset_bottom = 320.0
 color = Color(0, 0, 0, 1)
 
-[node name="Label2" type="Label" parent="ColorRect2"]
-offset_left = 18.0
-offset_top = -25.0
-offset_right = 31.0
-offset_bottom = -2.0
-scale = Vector2(8, 8)
-text = "1"
-
 [node name="ColorRect3" type="ColorRect" parent="."]
 z_index = -1
 offset_left = 419.0
@@ -56,14 +50,6 @@ offset_top = 171.0
 offset_right = 526.0
 offset_bottom = 320.0
 color = Color(0, 0, 0, 1)
-
-[node name="Label2" type="Label" parent="ColorRect3"]
-offset_left = 18.0
-offset_top = -25.0
-offset_right = 31.0
-offset_bottom = -2.0
-scale = Vector2(8, 8)
-text = "2"
 
 [node name="Label3" type="Label" parent="."]
 offset_left = 343.0
@@ -83,5 +69,15 @@ offset_right = 572.0
 offset_bottom = 502.0
 scale = Vector2(2, 2)
 text = "START"
+
+[node name="Pixil-frame-0-3(1)" type="Sprite2D" parent="."]
+position = Vector2(473, 244)
+scale = Vector2(2, 2)
+texture = ExtResource("2_glwn4")
+
+[node name="Pixil-frame-0-4" type="Sprite2D" parent="."]
+position = Vector2(680, 246)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gv55y")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
