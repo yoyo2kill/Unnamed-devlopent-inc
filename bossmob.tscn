@@ -1,0 +1,90 @@
+[gd_scene load_steps=15 format=3 uid="uid://8ff1x6gt2hr0"]
+
+[ext_resource type="Script" uid="uid://ur7s8g1sml64" path="res://Bossmob.gd" id="1_4tl63"]
+[ext_resource type="PackedScene" uid="uid://n1gdfyptt3xx" path="res://scence/enemy.tscn" id="2_cvgab"]
+[ext_resource type="Texture2D" uid="uid://djbxfm3lrid5o" path="res://icon.svg" id="3_abol3"]
+[ext_resource type="PackedScene" uid="uid://cfchafbrsl88s" path="res://scence/duplicator.tscn" id="3_cvgab"]
+[ext_resource type="Script" uid="uid://cytbaoaxrnmcx" path="res://Scrpit/KillboxEnemy.gd" id="4_2ycmh"]
+[ext_resource type="PackedScene" uid="uid://b7yancvguxpsh" path="res://scence/speed_enemy.tscn" id="4_cvgab"]
+[ext_resource type="PackedScene" uid="uid://hb1yvwkstoa7" path="res://Scrpit/spitter.tscn" id="5_abol3"]
+[ext_resource type="Script" uid="uid://dy0j7hueodkgu" path="res://Scrpit/hitbox.gd" id="5_lepxt"]
+[ext_resource type="Texture2D" uid="uid://dfd0xvgbxvas8" path="res://Assets/Mana/black.png" id="6_3bo12"]
+[ext_resource type="Texture2D" uid="uid://bt0ywbb1fx0sq" path="res://Assets/Mana/green.png" id="7_5hcyk"]
+[ext_resource type="Script" uid="uid://c4u2ih3na56yi" path="res://Scrpit/enemy health.gd" id="8_apm56"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_355ya"]
+radius = 56.0357
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pu7dk"]
+size = Vector2(137, 136)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0p8j0"]
+size = Vector2(180, 182.667)
+
+[node name="Bossmob" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 3
+motion_mode = 1
+wall_min_slide_angle = 0.0
+safe_margin = 0.001
+script = ExtResource("1_4tl63")
+enemy_scene = ExtResource("2_cvgab")
+duplicator_scene = ExtResource("3_cvgab")
+spitter_scene = ExtResource("5_abol3")
+speed_scene = ExtResource("4_cvgab")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.988235, 0, 0, 1)
+texture = ExtResource("3_abol3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_355ya")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("4_2ycmh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_pu7dk")
+
+[node name="Hitbox" type="Area2D" parent="." groups=["enemy_hitbox"]]
+scale = Vector2(3, 3)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("5_lepxt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0.166667, 0.166666)
+scale = Vector2(0.25, 0.25)
+shape = SubResource("RectangleShape2D_0p8j0")
+
+[node name="EnemyHealth" type="TextureProgressBar" parent="."]
+offset_left = -85.0
+offset_top = -110.0
+offset_right = 344.0
+offset_bottom = -52.0
+scale = Vector2(0.4, 0.4)
+max_value = 1000.0
+value = 1000.0
+texture_under = ExtResource("6_3bo12")
+texture_progress = ExtResource("7_5hcyk")
+script = ExtResource("8_apm56")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 10.0
+
+[node name="GroundPoundCooldown" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

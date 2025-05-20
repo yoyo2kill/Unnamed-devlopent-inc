@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://dsyre4ksowmn0"]
+[gd_scene load_steps=13 format=4 uid="uid://dsyre4ksowmn0"]
 
 [ext_resource type="Texture2D" uid="uid://60enuq2xioj" path="res://Assets/Restaurant-Sprite_tile.png" id="1_0kgwp"]
 [ext_resource type="PackedScene" uid="uid://o8wcs6qgym68" path="res://scence/player.tscn" id="2_2c2h7"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bdvupl28gv70r" path="res://heart.tscn" id="6_cx6us"]
 [ext_resource type="AudioStream" uid="uid://duqrcr5slfy2l" path="res://scence/Untitled Development Team (mp3cut.net).mp3" id="7_tr4tn"]
 [ext_resource type="Script" uid="uid://dpejn4qufpy6o" path="res://scence/audio_stream_player.gd" id="8_xtrln"]
+[ext_resource type="PackedScene" uid="uid://8ff1x6gt2hr0" path="res://bossmob.tscn" id="9_ocd6s"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2c2h7"]
 texture = ExtResource("1_0kgwp")
@@ -147,6 +148,8 @@ stream = ExtResource("7_tr4tn")
 autoplay = true
 parameters/looping = true
 script = ExtResource("8_xtrln")
+
+[node name="Bossmob" parent="." instance=ExtResource("9_ocd6s")]
 
 [connection signal="timeout" from="CharacterBody2D/Camera2D/Panel2/Panel cool" to="CharacterBody2D/Camera2D/Panel2" method="_on_panel_cool_timeout"]
 [connection signal="timeout" from="CharacterBody2D/Timer2" to="CharacterBody2D" method="_on_timer_timeout"]
