@@ -1,8 +1,7 @@
 extends CharacterBody2D
 
 class_name enemy
-@export var detection_radius = 500.0
-@export var shooting_distance = 200.0
+
 var time_remaining
 var on_fire = false
 var fire_damage = 50 # Damage per second
@@ -15,7 +14,7 @@ var shock_duration = 3
 var shock_timer = 0.0
 var shock_slow_factor = 0.5 # Movement slowed by 50% when shocked (0.5 for 50% of original speed)
 
-const SPEED = 150
+const speed = 150
 @export var player: Node2D
 @onready var nav_agent := $NavigationAgent2D as NavigationAgent2D
 @onready var enemy_health: TextureProgressBar = $EnemyHealth
@@ -30,11 +29,21 @@ func _process(delta):
 	process_health_check(delta) # Call health check every frame
 
 func _physics_process(delta: float) -> void:
-	var distance_to_player = global_position.distance_to(player.global_position)
-	if distance_to_player <= detection_radius:
-		var direction = (player.global_position - global_position).normalized()
-		velocity = direction * SPEED
+	var dir = to_local(nav_agent.get_next_path_position()).normalized()
+
+	# Apply shock slow effect if shocked
+	var current_speed = speed
+	if is_shocked:
+		current_speed *= shock_slow_factor
+
+	velocity = dir * current_speed
 	move_and_slide()
+
+func makepath() -> void:
+	nav_agent.target_position = player.global_position
+
+func _on_timer_timeout():
+	makepath()
 
 func process_fire(delta):
 	if on_fire:
@@ -65,7 +74,7 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area is Fireball:
 		on_fire = true
 		fire_timer = 0.0
-		enemy_health.value -= 10
+		enemy_health.value -= 20
 	elif area.is_in_group("lightning") or area.get_parent().is_in_group("lightning") or area.name.begins_with("Lightning"):
 		take_lightning_damage(30)
 
@@ -80,7 +89,7 @@ func process_health_check(delta):
 		if can_duplicate:
 			duplicate_and_queue_free()
 		else:
-			die()
+			queue_free() #  <- This is the added line
 
 func duplicate_and_queue_free():
 	if can_duplicate:
@@ -111,16 +120,5 @@ func duplicate_and_queue_free():
 
 			parent.add_child(duplicate1)
 			parent.add_child(duplicate2)
-			
 
 		queue_free() # And the original gets removed here
-# In your Enemy script:
-signal enemy_died
-
-# In your enemy death function (wherever the enemy is destroyed):
-func die():
-	# Your existing death code...
-	
-	# Emit the signal before freeing
-	emit_signal("enemy_died")
-	queue_free()
