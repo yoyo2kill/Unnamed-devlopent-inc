@@ -1,0 +1,276 @@
+[gd_scene load_steps=15 format=3 uid="uid://vc6lmjo2smpw"]
+
+[ext_resource type="PackedScene" uid="uid://o8wcs6qgym68" path="res://scence/player.tscn" id="1_tt04m"]
+[ext_resource type="PackedScene" uid="uid://n1gdfyptt3xx" path="res://scence/enemy.tscn" id="3_7essg"]
+[ext_resource type="Script" uid="uid://cexv8h5jjb4mr" path="res://Scrpit/panel.gd" id="3_qj2y4"]
+[ext_resource type="Script" uid="uid://c52qr1v42tdkw" path="res://Scrpit/panel_2.gd" id="4_47hqa"]
+[ext_resource type="PackedScene" uid="uid://crt0i8ojonq0r" path="res://control.tscn" id="6_qj2y4"]
+[ext_resource type="PackedScene" uid="uid://bdvupl28gv70r" path="res://heart.tscn" id="6_sr2ul"]
+[ext_resource type="PackedScene" uid="uid://cfchafbrsl88s" path="res://scence/duplicator.tscn" id="9_4rajj"]
+[ext_resource type="Script" uid="uid://bgxpjvaqluy6t" path="res://Scrpit/spawner.gd" id="9_bk32q"]
+[ext_resource type="Texture2D" uid="uid://60enuq2xioj" path="res://Assets/Restaurant-Sprite_tile.png" id="10_4rajj"]
+[ext_resource type="PackedScene" uid="uid://hb1yvwkstoa7" path="res://Scrpit/spitter.tscn" id="10_bk32q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bk32q"]
+size = Vector2(99, 234)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4rajj"]
+size = Vector2(4083, 87.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_47hqa"]
+radius = 62.6498
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b580w"]
+size = Vector2(654, 67)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_tt04m")]
+position = Vector2(35, -153)
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+
+[node name="Panel" type="Panel" parent="CharacterBody2D/Camera2D"]
+offset_left = 399.0
+offset_top = -301.0
+offset_right = 553.0
+offset_bottom = -261.0
+script = ExtResource("3_qj2y4")
+
+[node name="Minutes" type="Label" parent="CharacterBody2D/Camera2D/Panel"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = -3.0
+offset_right = 60.0
+offset_bottom = 39.0
+theme_override_font_sizes/font_size = 30
+text = ":00"
+horizontal_alignment = 1
+
+[node name="Seconds" type="Label" parent="CharacterBody2D/Camera2D/Panel"]
+layout_mode = 0
+offset_left = 60.0
+offset_top = -3.0
+offset_right = 103.0
+offset_bottom = 39.0
+theme_override_font_sizes/font_size = 30
+text = ":00"
+horizontal_alignment = 1
+
+[node name="Msec" type="Label" parent="CharacterBody2D/Camera2D/Panel"]
+layout_mode = 0
+offset_left = 101.0
+offset_top = -3.0
+offset_right = 144.0
+offset_bottom = 39.0
+theme_override_font_sizes/font_size = 30
+text = ":00"
+horizontal_alignment = 1
+
+[node name="Panel2" type="Panel" parent="CharacterBody2D/Camera2D"]
+offset_left = 294.0
+offset_top = -301.0
+offset_right = 391.0
+offset_bottom = -261.0
+script = ExtResource("4_47hqa")
+
+[node name="WaveLabel" type="Label" parent="CharacterBody2D/Camera2D/Panel2"]
+layout_mode = 0
+offset_left = 5.0
+offset_right = 101.0
+offset_bottom = 39.0
+theme_override_font_sizes/font_size = 25
+text = "Wave 1"
+
+[node name="HealthController" parent="CharacterBody2D" groups=["health_controller"] instance=ExtResource("6_qj2y4")]
+offset_left = -12.0
+offset_top = 89.0
+offset_right = 28.0
+offset_bottom = 129.0
+
+[node name="HeartContainer" parent="CharacterBody2D/HealthController" instance=ExtResource("6_sr2ul")]
+layout_mode = 0
+offset_left = -517.0
+offset_top = -368.0
+offset_right = 499.0
+offset_bottom = -168.0
+scale = Vector2(0.4, 0.4)
+
+[node name="Timer2" type="Timer" parent="CharacterBody2D"]
+wait_time = 0.2
+one_shot = true
+
+[node name="coldown timer2" type="Timer" parent="CharacterBody2D"]
+one_shot = true
+
+[node name="WaveSpawner" type="Node2D" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("9_bk32q")
+player = NodePath("../CharacterBody2D")
+round_1_enemy_types = Array[String](["3"])
+round_1_enemy_counts = Array[int]([5])
+
+[node name="Enemy" parent="WaveSpawner" node_paths=PackedStringArray("player") instance=ExtResource("3_7essg")]
+position = Vector2(171824, -79007)
+scale = Vector2(0.5, 0.5)
+player = NodePath("../../CharacterBody2D")
+
+[node name="Enemy_spitter" parent="WaveSpawner" instance=ExtResource("10_bk32q")]
+position = Vector2(-879704, 22310)
+
+[node name="Enemy_Duplicator" parent="WaveSpawner" instance=ExtResource("9_4rajj")]
+position = Vector2(-2.68307e+06, -6276)
+
+[node name="Node" type="Node" parent="."]
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Node"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/StaticBody2D2"]
+position = Vector2(842, 308.5)
+shape = SubResource("RectangleShape2D_bk32q")
+
+[node name="Restaurant-spriteTile" type="Sprite2D" parent="Node/StaticBody2D2"]
+position = Vector2(391, 288)
+scale = Vector2(5, 5)
+texture = ExtResource("10_4rajj")
+offset = Vector2(90, 0)
+region_enabled = true
+region_rect = Rect2(681.95, 492.24, 22.4851, 67.6183)
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Node"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/StaticBody2D3"]
+position = Vector2(-243.5, 662)
+shape = SubResource("RectangleShape2D_4rajj")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Node"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/StaticBody2D4"]
+position = Vector2(-1322, -176)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_4rajj")
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="Node"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/StaticBody2D5"]
+position = Vector2(-260, -750)
+shape = SubResource("RectangleShape2D_4rajj")
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="Node"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/StaticBody2D6"]
+position = Vector2(956, -338)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_4rajj")
+
+[node name="Restaurant-spriteTile6" type="Sprite2D" parent="Node"]
+z_index = -100
+z_as_relative = false
+position = Vector2(437, 339)
+scale = Vector2(5, 5)
+texture = ExtResource("10_4rajj")
+region_enabled = true
+region_rect = Rect2(833.902, 448.592, 190.733, 136.108)
+
+[node name="Restaurant-spriteTile7" type="Sprite2D" parent="Node"]
+z_index = -100
+position = Vector2(-644, 324)
+scale = Vector2(5, 5)
+texture = ExtResource("10_4rajj")
+region_enabled = true
+region_rect = Rect2(831.233, 448.694, 255.935, 130.092)
+
+[node name="Restaurant-spriteTile2" type="Sprite2D" parent="Node"]
+z_index = -100
+position = Vector2(450, -460)
+scale = Vector2(5, 5)
+texture = ExtResource("10_4rajj")
+region_enabled = true
+region_rect = Rect2(833.902, 383.434, 184.898, 201.267)
+
+[node name="Restaurant-spriteTile" type="Sprite2D" parent="Node"]
+z_index = -100
+z_as_relative = false
+position = Vector2(-652, -486)
+scale = Vector2(5, 5)
+texture = ExtResource("10_4rajj")
+region_enabled = true
+region_rect = Rect2(444, 381.284, 257.466, 194.916)
+
+[node name="StaticBody2D7" type="StaticBody2D" parent="Node"]
+position = Vector2(-553, -190)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/StaticBody2D7"]
+position = Vector2(-12, 12)
+rotation = 1.5708
+shape = SubResource("CircleShape2D_47hqa")
+
+[node name="StaticBody2D8" type="StaticBody2D" parent="Node"]
+position = Vector2(-553, -190)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/StaticBody2D8"]
+position = Vector2(245, -56)
+rotation = 1.5708
+shape = SubResource("CircleShape2D_47hqa")
+
+[node name="StaticBody2D9" type="StaticBody2D" parent="Node"]
+position = Vector2(-553, -190)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/StaticBody2D9"]
+position = Vector2(-8, -208)
+rotation = 1.5708
+shape = SubResource("CircleShape2D_47hqa")
+
+[node name="StaticBody2D10" type="StaticBody2D" parent="Node"]
+position = Vector2(-553, -190)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/StaticBody2D10"]
+position = Vector2(-329, -69)
+rotation = 1.5708
+shape = SubResource("CircleShape2D_47hqa")
+
+[node name="StaticBody2D11" type="StaticBody2D" parent="Node"]
+position = Vector2(-553, -190)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/StaticBody2D11"]
+position = Vector2(-244, -213)
+rotation = 1.5708
+shape = SubResource("CircleShape2D_47hqa")
+
+[node name="StaticBody2D12" type="StaticBody2D" parent="Node"]
+position = Vector2(-553, -190)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/StaticBody2D12"]
+position = Vector2(310, -220)
+rotation = 1.5708
+shape = SubResource("CircleShape2D_47hqa")
+
+[node name="StaticBody2D13" type="StaticBody2D" parent="Node"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/StaticBody2D13"]
+position = Vector2(-54.5, -198)
+shape = SubResource("RectangleShape2D_bk32q")
+
+[node name="StaticBody2D14" type="StaticBody2D" parent="Node"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/StaticBody2D14"]
+position = Vector2(-1148.5, -647.625)
+shape = SubResource("RectangleShape2D_bk32q")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/StaticBody2D"]
+position = Vector2(-788, -577.5)
+shape = SubResource("RectangleShape2D_b580w")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+z_index = -1000
+z_as_relative = false
+offset_left = -3953.0
+offset_top = -4684.0
+offset_right = 5487.0
+offset_bottom = 5041.0
+color = Color(0, 0, 0, 1)
+
+[connection signal="timeout" from="CharacterBody2D/Timer2" to="CharacterBody2D" method="_on_timer_timeout"]
+[connection signal="timeout" from="CharacterBody2D/coldown timer2" to="CharacterBody2D" method="_on_coldown_timer_timeout"]

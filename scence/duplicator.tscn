@@ -1,16 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://b3i6y3lolbb1i"]
+[gd_scene load_steps=13 format=3 uid="uid://cfchafbrsl88s"]
 
-[ext_resource type="Script" uid="uid://ur7s8g1sml64" path="res://Bossmob.gd" id="1_4tl63"]
-[ext_resource type="PackedScene" uid="uid://n1gdfyptt3xx" path="res://scence/enemy.tscn" id="2_cvgab"]
-[ext_resource type="Texture2D" uid="uid://djbxfm3lrid5o" path="res://icon.svg" id="3_abol3"]
-[ext_resource type="PackedScene" uid="uid://cfchafbrsl88s" path="res://duplicator.tscn" id="3_cvgab"]
-[ext_resource type="Script" uid="uid://cytbaoaxrnmcx" path="res://Scrpit/KillboxEnemy.gd" id="4_2ycmh"]
-[ext_resource type="Script" uid="uid://dy0j7hueodkgu" path="res://Scrpit/hitbox.gd" id="5_lepxt"]
-[ext_resource type="Texture2D" uid="uid://dfd0xvgbxvas8" path="res://Assets/Mana/black.png" id="6_3bo12"]
-[ext_resource type="Texture2D" uid="uid://bt0ywbb1fx0sq" path="res://Assets/Mana/green.png" id="7_5hcyk"]
-[ext_resource type="Script" uid="uid://c4u2ih3na56yi" path="res://Scrpit/enemy health.gd" id="8_apm56"]
-[ext_resource type="Texture2D" uid="uid://cdknt4dfa22xx" path="res://12344.png" id="9_6ehcc"]
-[ext_resource type="Script" uid="uid://ddintlx20yoej" path="res://Scrpit/on_fire.gd" id="10_1g635"]
+[ext_resource type="Script" uid="uid://cpr8irgstk7o0" path="res://scence/duplicator.gd" id="1_574cd"]
+[ext_resource type="Texture2D" uid="uid://djbxfm3lrid5o" path="res://icon.svg" id="2_jge6b"]
+[ext_resource type="Script" uid="uid://cytbaoaxrnmcx" path="res://Scrpit/KillboxEnemy.gd" id="3_hxd6y"]
+[ext_resource type="Script" uid="uid://dy0j7hueodkgu" path="res://Scrpit/hitbox.gd" id="4_jhrj4"]
+[ext_resource type="Texture2D" uid="uid://dfd0xvgbxvas8" path="res://Assets/Mana/black.png" id="5_b5c2a"]
+[ext_resource type="Texture2D" uid="uid://bt0ywbb1fx0sq" path="res://Assets/Mana/green.png" id="6_uiug2"]
+[ext_resource type="Script" uid="uid://c4u2ih3na56yi" path="res://Scrpit/enemy health.gd" id="7_5xc7e"]
+[ext_resource type="Texture2D" uid="uid://cdknt4dfa22xx" path="res://12344.png" id="8_a4bio"]
+[ext_resource type="Script" uid="uid://ddintlx20yoej" path="res://Scrpit/on_fire.gd" id="9_jtbxg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_355ya"]
 radius = 56.0357
@@ -21,19 +19,17 @@ size = Vector2(137, 136)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0p8j0"]
 size = Vector2(180, 182.667)
 
-[node name="Bossmob" type="CharacterBody2D"]
+[node name="Duplicator" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 3
 motion_mode = 1
 wall_min_slide_angle = 0.0
 safe_margin = 0.001
-script = ExtResource("1_4tl63")
-enemy_scene = ExtResource("2_cvgab")
-duplicator_scene = ExtResource("3_cvgab")
+script = ExtResource("1_574cd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.988235, 0, 0, 1)
-texture = ExtResource("3_abol3")
+texture = ExtResource("2_jge6b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_355ya")
@@ -47,7 +43,7 @@ autostart = true
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 4
-script = ExtResource("4_2ycmh")
+script = ExtResource("3_hxd6y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0.5, 0)
@@ -57,7 +53,7 @@ shape = SubResource("RectangleShape2D_pu7dk")
 scale = Vector2(3, 3)
 collision_layer = 2
 collision_mask = 2
-script = ExtResource("5_lepxt")
+script = ExtResource("4_jhrj4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0.166667, 0.166666)
@@ -70,25 +66,17 @@ offset_top = -110.0
 offset_right = 344.0
 offset_bottom = -52.0
 scale = Vector2(0.4, 0.4)
-max_value = 2000.0
-value = 2000.0
-allow_greater = true
-allow_lesser = true
-texture_under = ExtResource("6_3bo12")
-texture_progress = ExtResource("7_5hcyk")
-script = ExtResource("8_apm56")
+max_value = 500.0
+value = 500.0
+texture_under = ExtResource("5_b5c2a")
+texture_progress = ExtResource("6_uiug2")
+script = ExtResource("7_5xc7e")
 
 [node name="12344" type="Sprite2D" parent="."]
 position = Vector2(-177.25, 0.124998)
 scale = Vector2(0.108929, 0.126019)
-texture = ExtResource("9_6ehcc")
-script = ExtResource("10_1g635")
-
-[node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 10.0
-
-[node name="GroundPoundCooldown" type="Timer" parent="."]
-wait_time = 2.0
+texture = ExtResource("8_a4bio")
+script = ExtResource("9_jtbxg")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=3 uid="uid://ijl1wrht0c2u"]
+
+[ext_resource type="Script" uid="uid://c5wlbsqukdwm7" path="res://Scrpit/game_over_screen.gd" id="1_6ioc1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1jkij"]
+bg_color = Color(0.140447, 0.140447, 0.140447, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6ioc1"]
+font_size = 128
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_si6v8"]
+bg_color = Color(0.999833, 2.40654e-06, 0.522381, 1)
+
+[sub_resource type="Theme" id="Theme_1c4pn"]
+default_font_size = 64
+/font_sizes/64 = 64
+/styles/1 = SubResource("StyleBoxFlat_si6v8")
+
+[sub_resource type="Theme" id="Theme_2sjwd"]
+default_font_size = 64
+
+[node name="GameOverScreen" type="CanvasLayer"]
+script = ExtResource("1_6ioc1")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1jkij")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Rows" type="VBoxContainer" parent="PanelContainer/MarginContainer/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="Title" type="Label" parent="PanelContainer/MarginContainer/CenterContainer/Rows"]
+layout_mode = 2
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_6ioc1")
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/MarginContainer/CenterContainer/Rows"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/CenterContainer/Rows/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="RESTART" type="Button" parent="PanelContainer/MarginContainer/CenterContainer/Rows/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_1c4pn")
+text = "    RESTART    "
+
+[node name="QUIT" type="Button" parent="PanelContainer/MarginContainer/CenterContainer/Rows/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_2sjwd")
+text = "QUIT"
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/CenterContainer/Rows/CenterContainer/VBoxContainer/RESTART" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/CenterContainer/Rows/CenterContainer/VBoxContainer/QUIT" to="." method="_on_quit_pressed"]
