@@ -11,7 +11,7 @@ var tooltip_1_shown = false
 var tooltip_2_shown = false
 var tooltip_3_shown = false
 var tooltip_4_shown = false
-
+var tooltip_5_shown = false
 func _ready() -> void:
 	# Make all tooltips initially invisible
 	tooltip_1.visible = false
@@ -41,3 +41,8 @@ func _process(delta: float) -> void:
 	# Tooltip 4 - Only show once when wave_number == 4
 	if $CharacterBody2D/Camera2D/Panel2.wave_number == 4 and not tooltip_4_shown:
 		tooltip_4.visible = true
+		Engine.time_scale = 0.0
+		tooltip_4_shown = true
+	if $CharacterBody2D/Camera2D/Panel2.wave_number == 5 and not tooltip_5_shown:
+		get_tree().change_scene_to_file("res://Hell.tscn")
+		tooltip_5_shown = true

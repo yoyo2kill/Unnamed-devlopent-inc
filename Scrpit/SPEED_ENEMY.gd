@@ -5,7 +5,7 @@ var fire_damage = 1  # Damage per second
 var fire_duration = 1.0  # Total duration in seconds
 var fire_timer = 0.0  # Current timer
 
-const SPEED = 400
+const SPEED = 300
 @export var detection_radius = 1000.0
 @export var shooting_distance = 200.0
 @export var player: Node2D

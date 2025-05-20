@@ -1,174 +1,34 @@
-[gd_scene load_steps=24 format=3 uid="uid://vc6lmjo2smpw"]
+[gd_scene load_steps=7 format=3 uid="uid://6x3l1l2j03a0"]
 
-[ext_resource type="Script" uid="uid://dqkoqom1eolf" path="res://scence/main.gd" id="1_b580w"]
-[ext_resource type="PackedScene" uid="uid://o8wcs6qgym68" path="res://scence/player.tscn" id="1_tt04m"]
-[ext_resource type="PackedScene" uid="uid://n1gdfyptt3xx" path="res://scence/enemy.tscn" id="3_7essg"]
-[ext_resource type="Script" uid="uid://cexv8h5jjb4mr" path="res://Scrpit/panel.gd" id="3_qj2y4"]
-[ext_resource type="Script" uid="uid://c52qr1v42tdkw" path="res://Scrpit/panel_2.gd" id="4_47hqa"]
-[ext_resource type="PackedScene" uid="uid://crt0i8ojonq0r" path="res://control.tscn" id="6_qj2y4"]
-[ext_resource type="PackedScene" uid="uid://bdvupl28gv70r" path="res://heart.tscn" id="6_sr2ul"]
-[ext_resource type="PackedScene" uid="uid://ctsxen00p0gs" path="res://tooltip4.tscn" id="7_8e33y"]
-[ext_resource type="PackedScene" uid="uid://lk0g2djv2eik" path="res://Tooltip2.tscn" id="8_skjli"]
-[ext_resource type="PackedScene" uid="uid://cfchafbrsl88s" path="res://scence/duplicator.tscn" id="9_4rajj"]
-[ext_resource type="Script" uid="uid://bgxpjvaqluy6t" path="res://Scrpit/spawner.gd" id="9_bk32q"]
-[ext_resource type="PackedScene" uid="uid://fcc3ikhmetr2" path="res://tooltip3.tscn" id="9_tsqyq"]
-[ext_resource type="Texture2D" uid="uid://60enuq2xioj" path="res://Assets/Restaurant-Sprite_tile.png" id="10_4rajj"]
-[ext_resource type="PackedScene" uid="uid://b7yancvguxpsh" path="res://scence/speed_enemy.tscn" id="10_b580w"]
-[ext_resource type="PackedScene" uid="uid://hb1yvwkstoa7" path="res://Scrpit/spitter.tscn" id="10_bk32q"]
-[ext_resource type="PackedScene" uid="uid://cwgdnb50xw3jf" path="res://tooltip1.tscn" id="13_hh3jc"]
-[ext_resource type="AudioStream" uid="uid://ulaa6r0u4w6h" path="res://Untitled Development Team.mp3" id="17_nvhh0"]
-[ext_resource type="Script" uid="uid://dpejn4qufpy6o" path="res://scence/audio_stream_player.gd" id="18_kbk2e"]
+[ext_resource type="Texture2D" uid="uid://60enuq2xioj" path="res://Assets/Restaurant-Sprite_tile.png" id="1_sy5k4"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bk32q"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j2q8x"]
 size = Vector2(99, 234)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4rajj"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_112p8"]
 size = Vector2(4083, 87.5)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_47hqa"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_e2u21"]
 radius = 62.6498
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_b580w"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bss38"]
 size = Vector2(654, 67)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hh3jc"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tda05"]
 size = Vector2(112, 302)
 
-[node name="Node2D" type="Node2D"]
-script = ExtResource("1_b580w")
+[node name="Node" type="Node"]
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_tt04m")]
-position = Vector2(14, 49)
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-
-[node name="Panel" type="Panel" parent="CharacterBody2D/Camera2D"]
-offset_left = 399.0
-offset_top = -301.0
-offset_right = 553.0
-offset_bottom = -261.0
-script = ExtResource("3_qj2y4")
-
-[node name="Minutes" type="Label" parent="CharacterBody2D/Camera2D/Panel"]
-layout_mode = 0
-offset_left = 17.0
-offset_top = -3.0
-offset_right = 60.0
-offset_bottom = 39.0
-theme_override_font_sizes/font_size = 30
-text = ":00"
-horizontal_alignment = 1
-
-[node name="Seconds" type="Label" parent="CharacterBody2D/Camera2D/Panel"]
-layout_mode = 0
-offset_left = 60.0
-offset_top = -3.0
-offset_right = 103.0
-offset_bottom = 39.0
-theme_override_font_sizes/font_size = 30
-text = ":00"
-horizontal_alignment = 1
-
-[node name="Msec" type="Label" parent="CharacterBody2D/Camera2D/Panel"]
-layout_mode = 0
-offset_left = 101.0
-offset_top = -3.0
-offset_right = 144.0
-offset_bottom = 39.0
-theme_override_font_sizes/font_size = 30
-text = ":00"
-horizontal_alignment = 1
-
-[node name="Panel2" type="Panel" parent="CharacterBody2D/Camera2D"]
-offset_left = 294.0
-offset_top = -301.0
-offset_right = 391.0
-offset_bottom = -261.0
-script = ExtResource("4_47hqa")
-
-[node name="WaveLabel" type="Label" parent="CharacterBody2D/Camera2D/Panel2"]
-layout_mode = 0
-offset_left = 5.0
-offset_right = 101.0
-offset_bottom = 39.0
-theme_override_font_sizes/font_size = 25
-text = "Wave 1"
-
-[node name="Panel cool" type="Timer" parent="CharacterBody2D/Camera2D/Panel2"]
-wait_time = 10.0
-
-[node name="HealthController" parent="CharacterBody2D" groups=["health_controller"] instance=ExtResource("6_qj2y4")]
-z_index = 100
-z_as_relative = false
-offset_left = -12.0
-offset_top = 89.0
-offset_right = 28.0
-offset_bottom = 129.0
-scale = Vector2(0.4, 0.4)
-
-[node name="HeartContainer" parent="CharacterBody2D/HealthController" instance=ExtResource("6_sr2ul")]
-layout_mode = 0
-offset_left = -1192.5
-offset_top = -827.5
-offset_right = -176.5
-offset_bottom = -627.5
-scale = Vector2(0.6, 0.6)
-pivot_offset = Vector2(0, -1)
-
-[node name="Timer2" type="Timer" parent="CharacterBody2D"]
-wait_time = 0.2
-one_shot = true
-
-[node name="coldown timer2" type="Timer" parent="CharacterBody2D"]
-one_shot = true
-
-[node name="Following UI" type="Control" parent="CharacterBody2D"]
+[node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Tooltip4" parent="CharacterBody2D/Following UI" instance=ExtResource("7_8e33y")]
-visible = false
-
-[node name="Tooltip1" parent="CharacterBody2D/Following UI" instance=ExtResource("13_hh3jc")]
-visible = false
-
-[node name="Tooltip2" parent="CharacterBody2D/Following UI" instance=ExtResource("8_skjli")]
-visible = false
-
-[node name="Tooltip3" parent="CharacterBody2D/Following UI" instance=ExtResource("9_tsqyq")]
-visible = false
-
-[node name="WaveSpawner" type="Node2D" parent="." node_paths=PackedStringArray("player")]
-script = ExtResource("9_bk32q")
-player = NodePath("../CharacterBody2D")
-round_1_enemy_types = Array[String](["Enemy"])
-round_2_enemy_types = Array[String](["Enemy", "Enemy_spitter"])
-round_2_enemy_counts = Array[int]([3, 2])
-round_3_enemy_types = Array[String](["Enemy", "Enemy_spitter", "SPEED_ENEMY"])
-round_3_enemy_counts = Array[int]([5, 1, 5])
-round_4_enemy_types = Array[String](["Enemy", "Enemy_spitter", "Enemy_Duplicator", "SPEED_ENEMY"])
-round_4_enemy_counts = Array[int]([3, 3, 2, 5])
-
-[node name="Enemy" parent="WaveSpawner" node_paths=PackedStringArray("player") instance=ExtResource("3_7essg")]
-position = Vector2(171824, -79007)
-player = NodePath("../../CharacterBody2D")
-
-[node name="Enemy_spitter" parent="WaveSpawner" instance=ExtResource("10_bk32q")]
-position = Vector2(-879704, 22310)
-
-[node name="Enemy_Duplicator" parent="WaveSpawner" node_paths=PackedStringArray("player") instance=ExtResource("9_4rajj")]
-position = Vector2(-2.68307e+06, -6276)
-player = NodePath("../../CharacterBody2D")
-
-[node name="Wave timer" type="Timer" parent="WaveSpawner"]
-wait_time = 10.0
-one_shot = true
-
-[node name="SPEED_ENEMY" parent="WaveSpawner" node_paths=PackedStringArray("player") instance=ExtResource("10_b580w")]
-position = Vector2(1e+10, 0)
-player = NodePath("../../CharacterBody2D")
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(330, -314)
 
 [node name="Node" type="Node" parent="."]
 
@@ -176,40 +36,40 @@ player = NodePath("../../CharacterBody2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node/StaticBody2D2"]
 position = Vector2(842, 308.5)
-shape = SubResource("RectangleShape2D_bk32q")
+shape = SubResource("RectangleShape2D_j2q8x")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="Node"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node/StaticBody2D3"]
 position = Vector2(-243.5, 662)
-shape = SubResource("RectangleShape2D_4rajj")
+shape = SubResource("RectangleShape2D_112p8")
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="Node"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node/StaticBody2D4"]
 position = Vector2(-1322, -176)
 rotation = 1.5708
-shape = SubResource("RectangleShape2D_4rajj")
+shape = SubResource("RectangleShape2D_112p8")
 
 [node name="StaticBody2D5" type="StaticBody2D" parent="Node"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node/StaticBody2D5"]
 position = Vector2(-260, -750)
-shape = SubResource("RectangleShape2D_4rajj")
+shape = SubResource("RectangleShape2D_112p8")
 
 [node name="StaticBody2D6" type="StaticBody2D" parent="Node"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node/StaticBody2D6"]
 position = Vector2(956, -338)
 rotation = 1.5708
-shape = SubResource("RectangleShape2D_4rajj")
+shape = SubResource("RectangleShape2D_112p8")
 
 [node name="Restaurant-spriteTile6" type="Sprite2D" parent="Node"]
 z_index = -100
 z_as_relative = false
 position = Vector2(437, 339)
 scale = Vector2(5, 5)
-texture = ExtResource("10_4rajj")
+texture = ExtResource("1_sy5k4")
 region_enabled = true
 region_rect = Rect2(833.902, 448.592, 190.733, 136.108)
 
@@ -217,7 +77,7 @@ region_rect = Rect2(833.902, 448.592, 190.733, 136.108)
 z_index = -1000
 position = Vector2(-644, 324)
 scale = Vector2(5, 5)
-texture = ExtResource("10_4rajj")
+texture = ExtResource("1_sy5k4")
 region_enabled = true
 region_rect = Rect2(831.233, 448.694, 255.935, 130.092)
 
@@ -225,7 +85,7 @@ region_rect = Rect2(831.233, 448.694, 255.935, 130.092)
 z_index = -100
 position = Vector2(450, -460)
 scale = Vector2(5, 5)
-texture = ExtResource("10_4rajj")
+texture = ExtResource("1_sy5k4")
 region_enabled = true
 region_rect = Rect2(833.902, 383.434, 184.898, 201.267)
 
@@ -234,7 +94,7 @@ z_index = -1000
 z_as_relative = false
 position = Vector2(-652, -486)
 scale = Vector2(5, 5)
-texture = ExtResource("10_4rajj")
+texture = ExtResource("1_sy5k4")
 region_enabled = true
 region_rect = Rect2(444, 381.284, 257.466, 194.916)
 
@@ -242,7 +102,7 @@ region_rect = Rect2(444, 381.284, 257.466, 194.916)
 z_index = -99
 z_as_relative = false
 position = Vector2(178.4, -70.8)
-texture = ExtResource("10_4rajj")
+texture = ExtResource("1_sy5k4")
 region_enabled = true
 region_rect = Rect2(542.927, 381.284, 98.783, 53.6051)
 
@@ -250,7 +110,7 @@ region_rect = Rect2(542.927, 381.284, 98.783, 53.6051)
 z_index = -99
 z_as_relative = false
 position = Vector2(-59, 96.8)
-texture = ExtResource("10_4rajj")
+texture = ExtResource("1_sy5k4")
 region_enabled = true
 region_rect = Rect2(720.796, 482.795, 26.4119, 28.7459)
 
@@ -258,7 +118,7 @@ region_rect = Rect2(720.796, 482.795, 26.4119, 28.7459)
 z_index = -99
 z_as_relative = false
 position = Vector2(-8.8, 108.4)
-texture = ExtResource("10_4rajj")
+texture = ExtResource("1_sy5k4")
 region_enabled = true
 region_rect = Rect2(720.796, 482.795, 26.4119, 28.7459)
 
@@ -266,7 +126,7 @@ region_rect = Rect2(720.796, 482.795, 26.4119, 28.7459)
 z_index = -99
 z_as_relative = false
 position = Vector2(-55.6, 154.4)
-texture = ExtResource("10_4rajj")
+texture = ExtResource("1_sy5k4")
 region_enabled = true
 region_rect = Rect2(720.796, 482.795, 26.4119, 28.7459)
 
@@ -274,7 +134,7 @@ region_rect = Rect2(720.796, 482.795, 26.4119, 28.7459)
 z_index = -99
 z_as_relative = false
 position = Vector2(15.2, 161.8)
-texture = ExtResource("10_4rajj")
+texture = ExtResource("1_sy5k4")
 region_enabled = true
 region_rect = Rect2(720.796, 482.795, 26.4119, 28.7459)
 
@@ -282,7 +142,7 @@ region_rect = Rect2(720.796, 482.795, 26.4119, 28.7459)
 z_index = -50
 z_as_relative = false
 position = Vector2(296.4, -67.6)
-texture = ExtResource("10_4rajj")
+texture = ExtResource("1_sy5k4")
 region_enabled = true
 region_rect = Rect2(675.492, 394.223, 23.2863, 29.3045)
 
@@ -290,7 +150,7 @@ region_rect = Rect2(675.492, 394.223, 23.2863, 29.3045)
 z_index = -99
 z_as_relative = false
 position = Vector2(52.6, 116)
-texture = ExtResource("10_4rajj")
+texture = ExtResource("1_sy5k4")
 region_enabled = true
 region_rect = Rect2(720.796, 482.795, 26.4119, 28.7459)
 
@@ -298,7 +158,7 @@ region_rect = Rect2(720.796, 482.795, 26.4119, 28.7459)
 z_index = -100
 z_as_relative = false
 position = Vector2(80, 164)
-texture = ExtResource("10_4rajj")
+texture = ExtResource("1_sy5k4")
 region_enabled = true
 region_rect = Rect2(720.796, 482.795, 26.4119, 28.7459)
 
@@ -306,7 +166,7 @@ region_rect = Rect2(720.796, 482.795, 26.4119, 28.7459)
 z_index = -99
 z_as_relative = false
 position = Vector2(47, 106.4)
-texture = ExtResource("10_4rajj")
+texture = ExtResource("1_sy5k4")
 region_enabled = true
 region_rect = Rect2(738.71, 437.853, 7.45013, 6.30499)
 
@@ -314,7 +174,7 @@ region_rect = Rect2(738.71, 437.853, 7.45013, 6.30499)
 z_index = -99
 z_as_relative = false
 position = Vector2(60.4, 110)
-texture = ExtResource("10_4rajj")
+texture = ExtResource("1_sy5k4")
 region_enabled = true
 region_rect = Rect2(738.71, 437.853, 7.45013, 6.30499)
 
@@ -322,7 +182,7 @@ region_rect = Rect2(738.71, 437.853, 7.45013, 6.30499)
 z_index = -99
 z_as_relative = false
 position = Vector2(-16, 101.8)
-texture = ExtResource("10_4rajj")
+texture = ExtResource("1_sy5k4")
 region_enabled = true
 region_rect = Rect2(738.71, 437.853, 7.45013, 6.30499)
 
@@ -330,7 +190,7 @@ region_rect = Rect2(738.71, 437.853, 7.45013, 6.30499)
 z_index = -99
 z_as_relative = false
 position = Vector2(-1.8, 103.4)
-texture = ExtResource("10_4rajj")
+texture = ExtResource("1_sy5k4")
 region_enabled = true
 region_rect = Rect2(738.71, 437.853, 7.45013, 6.30499)
 
@@ -338,7 +198,7 @@ region_rect = Rect2(738.71, 437.853, 7.45013, 6.30499)
 z_index = -99
 z_as_relative = false
 position = Vector2(-61.4, 88.6)
-texture = ExtResource("10_4rajj")
+texture = ExtResource("1_sy5k4")
 region_enabled = true
 region_rect = Rect2(738.71, 437.853, 7.45013, 6.30499)
 
@@ -346,7 +206,7 @@ region_rect = Rect2(738.71, 437.853, 7.45013, 6.30499)
 z_index = -99
 z_as_relative = false
 position = Vector2(15.8, 151.4)
-texture = ExtResource("10_4rajj")
+texture = ExtResource("1_sy5k4")
 region_enabled = true
 region_rect = Rect2(738.71, 437.853, 7.45013, 6.30499)
 
@@ -354,7 +214,7 @@ region_rect = Rect2(738.71, 437.853, 7.45013, 6.30499)
 z_index = -99
 z_as_relative = false
 position = Vector2(75.6, 154.4)
-texture = ExtResource("10_4rajj")
+texture = ExtResource("1_sy5k4")
 region_enabled = true
 region_rect = Rect2(738.71, 437.853, 7.45013, 6.30499)
 
@@ -362,7 +222,7 @@ region_rect = Rect2(738.71, 437.853, 7.45013, 6.30499)
 z_index = -99
 z_as_relative = false
 position = Vector2(86.4, 157.8)
-texture = ExtResource("10_4rajj")
+texture = ExtResource("1_sy5k4")
 region_enabled = true
 region_rect = Rect2(738.71, 437.853, 7.45013, 6.30499)
 
@@ -370,7 +230,7 @@ region_rect = Rect2(738.71, 437.853, 7.45013, 6.30499)
 z_index = -101
 z_as_relative = false
 position = Vector2(79.6, 147.2)
-texture = ExtResource("10_4rajj")
+texture = ExtResource("1_sy5k4")
 region_enabled = true
 region_rect = Rect2(719.778, 451.598, 12.2846, 23.7891)
 
@@ -378,7 +238,7 @@ region_rect = Rect2(719.778, 451.598, 12.2846, 23.7891)
 z_index = -101
 z_as_relative = false
 position = Vector2(94.8, 159)
-texture = ExtResource("10_4rajj")
+texture = ExtResource("1_sy5k4")
 region_enabled = true
 region_rect = Rect2(740.307, 450.499, 10.7023, 26.6072)
 
@@ -386,7 +246,7 @@ region_rect = Rect2(740.307, 450.499, 10.7023, 26.6072)
 z_index = -101
 z_as_relative = false
 position = Vector2(-41.6, 154.4)
-texture = ExtResource("10_4rajj")
+texture = ExtResource("1_sy5k4")
 region_enabled = true
 region_rect = Rect2(740.307, 450.499, 10.7023, 26.6072)
 
@@ -394,7 +254,7 @@ region_rect = Rect2(740.307, 450.499, 10.7023, 26.6072)
 z_index = -101
 z_as_relative = false
 position = Vector2(66.8, 112.4)
-texture = ExtResource("10_4rajj")
+texture = ExtResource("1_sy5k4")
 region_enabled = true
 region_rect = Rect2(740.307, 450.499, 10.7023, 26.6072)
 
@@ -402,7 +262,7 @@ region_rect = Rect2(740.307, 450.499, 10.7023, 26.6072)
 z_index = -101
 z_as_relative = false
 position = Vector2(-23, 107)
-texture = ExtResource("10_4rajj")
+texture = ExtResource("1_sy5k4")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(740.307, 450.499, 10.7023, 26.6072)
@@ -411,7 +271,7 @@ region_rect = Rect2(740.307, 450.499, 10.7023, 26.6072)
 z_index = -101
 z_as_relative = false
 position = Vector2(-73.2, 96)
-texture = ExtResource("10_4rajj")
+texture = ExtResource("1_sy5k4")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(740.307, 450.499, 10.7023, 26.6072)
@@ -420,7 +280,7 @@ region_rect = Rect2(740.307, 450.499, 10.7023, 26.6072)
 z_index = -101
 z_as_relative = false
 position = Vector2(27.2, 149)
-texture = ExtResource("10_4rajj")
+texture = ExtResource("1_sy5k4")
 region_enabled = true
 region_rect = Rect2(753.321, 451.173, 13.0085, 25.4468)
 
@@ -428,7 +288,7 @@ region_rect = Rect2(753.321, 451.173, 13.0085, 25.4468)
 z_index = -101
 z_as_relative = false
 position = Vector2(42, 102)
-texture = ExtResource("10_4rajj")
+texture = ExtResource("1_sy5k4")
 region_enabled = true
 region_rect = Rect2(753.321, 451.173, 13.0085, 25.4468)
 
@@ -437,7 +297,7 @@ z_index = -101
 z_as_relative = false
 position = Vector2(6, 148.6)
 skew = -0.10472
-texture = ExtResource("10_4rajj")
+texture = ExtResource("1_sy5k4")
 region_enabled = true
 region_rect = Rect2(719.778, 451.598, 12.2846, 23.7891)
 
@@ -445,7 +305,7 @@ region_rect = Rect2(719.778, 451.598, 12.2846, 23.7891)
 z_index = -99
 z_as_relative = false
 position = Vector2(78.6, 161.4)
-texture = ExtResource("10_4rajj")
+texture = ExtResource("1_sy5k4")
 region_enabled = true
 region_rect = Rect2(738.71, 437.853, 7.45013, 6.30499)
 
@@ -453,7 +313,7 @@ region_rect = Rect2(738.71, 437.853, 7.45013, 6.30499)
 z_index = -99
 z_as_relative = false
 position = Vector2(-62.4, 142.8)
-texture = ExtResource("10_4rajj")
+texture = ExtResource("1_sy5k4")
 region_enabled = true
 region_rect = Rect2(719.88, 431.229, 6.36096, 13.0807)
 
@@ -461,7 +321,7 @@ region_rect = Rect2(719.88, 431.229, 6.36096, 13.0807)
 z_index = -99
 z_as_relative = false
 position = Vector2(-8.6, 92)
-texture = ExtResource("10_4rajj")
+texture = ExtResource("1_sy5k4")
 region_enabled = true
 region_rect = Rect2(719.88, 431.229, 6.36096, 13.0807)
 
@@ -471,7 +331,7 @@ z_as_relative = false
 position = Vector2(-0.600002, 103.2)
 rotation = -1.14319
 scale = Vector2(0.8, 0.8)
-texture = ExtResource("10_4rajj")
+texture = ExtResource("1_sy5k4")
 region_enabled = true
 region_rect = Rect2(706.664, 479.612, 5.62164, 6.71243)
 
@@ -481,7 +341,7 @@ z_as_relative = false
 position = Vector2(-15.2, 100)
 rotation = -5.69152
 scale = Vector2(0.8, 0.8)
-texture = ExtResource("10_4rajj")
+texture = ExtResource("1_sy5k4")
 region_enabled = true
 region_rect = Rect2(706.664, 479.612, 5.62164, 6.71243)
 
@@ -491,7 +351,7 @@ z_as_relative = false
 position = Vector2(-9, 106.8)
 rotation = -0.785398
 scale = Vector2(0.8, 0.8)
-texture = ExtResource("10_4rajj")
+texture = ExtResource("1_sy5k4")
 region_enabled = true
 region_rect = Rect2(706.664, 479.612, 5.62164, 6.71243)
 
@@ -501,7 +361,7 @@ z_as_relative = false
 position = Vector2(-61, 88.4)
 rotation = -0.785398
 scale = Vector2(0.8, 0.8)
-texture = ExtResource("10_4rajj")
+texture = ExtResource("1_sy5k4")
 region_enabled = true
 region_rect = Rect2(706.664, 479.612, 5.62164, 6.71243)
 
@@ -511,7 +371,7 @@ z_as_relative = false
 position = Vector2(60.8, 109.8)
 rotation = -0.785398
 scale = Vector2(0.8, 0.8)
-texture = ExtResource("10_4rajj")
+texture = ExtResource("1_sy5k4")
 region_enabled = true
 region_rect = Rect2(706.664, 479.612, 5.62164, 6.71243)
 
@@ -521,7 +381,7 @@ z_as_relative = false
 position = Vector2(79.4, 161)
 rotation = -0.785398
 scale = Vector2(0.8, 0.8)
-texture = ExtResource("10_4rajj")
+texture = ExtResource("1_sy5k4")
 region_enabled = true
 region_rect = Rect2(706.664, 479.612, 5.62164, 6.71243)
 
@@ -531,7 +391,7 @@ z_as_relative = false
 position = Vector2(75.6, 154.6)
 rotation = 1.12923
 scale = Vector2(0.8, 0.8)
-texture = ExtResource("10_4rajj")
+texture = ExtResource("1_sy5k4")
 region_enabled = true
 region_rect = Rect2(706.664, 479.612, 5.62164, 6.71243)
 
@@ -541,7 +401,7 @@ z_as_relative = false
 position = Vector2(-49.6, 149.6)
 rotation = 1.12923
 scale = Vector2(0.8, 0.8)
-texture = ExtResource("10_4rajj")
+texture = ExtResource("1_sy5k4")
 region_enabled = true
 region_rect = Rect2(706.664, 479.612, 5.62164, 6.71243)
 
@@ -551,7 +411,7 @@ z_as_relative = false
 position = Vector2(15.8, 150.6)
 rotation = 1.12923
 scale = Vector2(0.8, 0.8)
-texture = ExtResource("10_4rajj")
+texture = ExtResource("1_sy5k4")
 region_enabled = true
 region_rect = Rect2(706.664, 479.612, 5.62164, 6.71243)
 
@@ -559,7 +419,7 @@ region_rect = Rect2(706.664, 479.612, 5.62164, 6.71243)
 z_index = -99
 z_as_relative = false
 position = Vector2(264.8, -67)
-texture = ExtResource("10_4rajj")
+texture = ExtResource("1_sy5k4")
 flip_h = true
 flip_v = true
 region_enabled = true
@@ -571,37 +431,37 @@ position = Vector2(-553, -190)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node/StaticBody2D7"]
 position = Vector2(-12, 12)
 rotation = 1.5708
-shape = SubResource("CircleShape2D_47hqa")
+shape = SubResource("CircleShape2D_e2u21")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Node/StaticBody2D7"]
 position = Vector2(-145, 229)
 rotation = 1.5708
-shape = SubResource("CircleShape2D_47hqa")
+shape = SubResource("CircleShape2D_e2u21")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Node/StaticBody2D7"]
 position = Vector2(164, 266)
 rotation = 1.5708
-shape = SubResource("CircleShape2D_47hqa")
+shape = SubResource("CircleShape2D_e2u21")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Node/StaticBody2D7"]
 position = Vector2(-392, 173)
 rotation = 1.5708
-shape = SubResource("CircleShape2D_47hqa")
+shape = SubResource("CircleShape2D_e2u21")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Node/StaticBody2D7"]
 position = Vector2(-377, 462)
 rotation = 1.5708
-shape = SubResource("CircleShape2D_47hqa")
+shape = SubResource("CircleShape2D_e2u21")
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="Node/StaticBody2D7"]
 position = Vector2(-23, 495)
 rotation = 1.5708
-shape = SubResource("CircleShape2D_47hqa")
+shape = SubResource("CircleShape2D_e2u21")
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="Node/StaticBody2D7"]
 position = Vector2(300, 511)
 rotation = 1.5708
-shape = SubResource("CircleShape2D_47hqa")
+shape = SubResource("CircleShape2D_e2u21")
 
 [node name="StaticBody2D8" type="StaticBody2D" parent="Node"]
 position = Vector2(-553, -190)
@@ -609,7 +469,7 @@ position = Vector2(-553, -190)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node/StaticBody2D8"]
 position = Vector2(238, -27)
 rotation = 1.5708
-shape = SubResource("CircleShape2D_47hqa")
+shape = SubResource("CircleShape2D_e2u21")
 
 [node name="StaticBody2D9" type="StaticBody2D" parent="Node"]
 position = Vector2(-553, -190)
@@ -617,7 +477,7 @@ position = Vector2(-553, -190)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node/StaticBody2D9"]
 position = Vector2(-8, -208)
 rotation = 1.5708
-shape = SubResource("CircleShape2D_47hqa")
+shape = SubResource("CircleShape2D_e2u21")
 
 [node name="StaticBody2D10" type="StaticBody2D" parent="Node"]
 position = Vector2(-553, -190)
@@ -625,7 +485,7 @@ position = Vector2(-553, -190)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node/StaticBody2D10"]
 position = Vector2(-332, -55)
 rotation = 1.5708
-shape = SubResource("CircleShape2D_47hqa")
+shape = SubResource("CircleShape2D_e2u21")
 
 [node name="StaticBody2D11" type="StaticBody2D" parent="Node"]
 position = Vector2(-553, -190)
@@ -633,7 +493,7 @@ position = Vector2(-553, -190)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node/StaticBody2D11"]
 position = Vector2(-244, -213)
 rotation = 1.5708
-shape = SubResource("CircleShape2D_47hqa")
+shape = SubResource("CircleShape2D_e2u21")
 
 [node name="StaticBody2D12" type="StaticBody2D" parent="Node"]
 position = Vector2(-553, -190)
@@ -641,32 +501,32 @@ position = Vector2(-553, -190)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node/StaticBody2D12"]
 position = Vector2(310, -220)
 rotation = 1.5708
-shape = SubResource("CircleShape2D_47hqa")
+shape = SubResource("CircleShape2D_e2u21")
 
 [node name="StaticBody2D13" type="StaticBody2D" parent="Node"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node/StaticBody2D13"]
 position = Vector2(-54.5, -198)
-shape = SubResource("RectangleShape2D_bk32q")
+shape = SubResource("RectangleShape2D_j2q8x")
 
 [node name="StaticBody2D14" type="StaticBody2D" parent="Node"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node/StaticBody2D14"]
 position = Vector2(-1148.5, -647.625)
-shape = SubResource("RectangleShape2D_bk32q")
+shape = SubResource("RectangleShape2D_j2q8x")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Node"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node/StaticBody2D"]
 position = Vector2(-788, -577.5)
-shape = SubResource("RectangleShape2D_b580w")
+shape = SubResource("RectangleShape2D_bss38")
 
 [node name="Node" type="Node" parent="Node"]
 
 [node name="Restaurant-spriteTile" type="Sprite2D" parent="Node/Node"]
 position = Vector2(391, 288)
 scale = Vector2(5, 5)
-texture = ExtResource("10_4rajj")
+texture = ExtResource("1_sy5k4")
 offset = Vector2(90, 0)
 region_enabled = true
 region_rect = Rect2(681.95, 492.24, 22.4851, 67.6183)
@@ -674,7 +534,7 @@ region_rect = Rect2(681.95, 492.24, 22.4851, 67.6183)
 [node name="Restaurant-spriteTile2" type="Sprite2D" parent="Node/Node"]
 position = Vector2(398, -201)
 scale = Vector2(5, 5)
-texture = ExtResource("10_4rajj")
+texture = ExtResource("1_sy5k4")
 offset = Vector2(90, 0)
 region_enabled = true
 region_rect = Rect2(681.95, 492.24, 22.4851, 67.6183)
@@ -683,31 +543,10 @@ region_rect = Rect2(681.95, 492.24, 22.4851, 67.6183)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node/StaticBody2D15"]
 position = Vector2(846, -190)
-shape = SubResource("RectangleShape2D_hh3jc")
+shape = SubResource("RectangleShape2D_tda05")
 
 [node name="StaticBody2D16" type="StaticBody2D" parent="Node"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node/StaticBody2D16"]
 position = Vector2(835, 308)
-shape = SubResource("RectangleShape2D_hh3jc")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-z_index = -1000
-z_as_relative = false
-offset_left = -4058.0
-offset_top = -4579.0
-offset_right = 5382.0
-offset_bottom = 5146.0
-color = Color(0, 0, 0, 1)
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("17_nvhh0")
-parameters/looping = true
-script = ExtResource("18_kbk2e")
-
-[connection signal="timeout" from="CharacterBody2D/Camera2D/Panel2/Panel cool" to="CharacterBody2D/Camera2D/Panel2" method="_on_panel_cool_timeout"]
-[connection signal="timeout" from="CharacterBody2D/Timer2" to="CharacterBody2D" method="_on_timer_timeout"]
-[connection signal="timeout" from="CharacterBody2D/coldown timer2" to="CharacterBody2D" method="_on_coldown_timer_timeout"]
-[connection signal="timeout" from="WaveSpawner/Wave timer" to="CharacterBody2D/Camera2D/Panel2" method="_on_wave_timer_timeout"]
-[connection signal="timeout" from="WaveSpawner/Wave timer" to="WaveSpawner" method="_on_wave_timer_timeout"]
+shape = SubResource("RectangleShape2D_tda05")

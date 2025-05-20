@@ -4,7 +4,7 @@ class_name spitter
 # Enemy properties
 @export var SPEED = 50.0
 
-@export var detection_radius = 300.0
+@export var detection_radius = 1000.0
 @export var shooting_distance = 200.0
 @export var bullet_speed = 200.0
 @export var fire_rate = 1.5  # Shots per second

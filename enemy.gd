@@ -6,7 +6,7 @@ var fire_duration = 1.0  # Total duration in seconds
 var fire_timer = 0.0  # Current timer
 
 const SPEED = 200
-@export var detection_radius = 500.0
+@export var detection_radius = 1000.0
 @export var shooting_distance = 200.0
 @export var player: Node2D
 @onready var nav_agent := $NavigationAgent2D as NavigationAgent2D

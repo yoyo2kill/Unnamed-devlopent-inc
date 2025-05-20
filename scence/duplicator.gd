@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 class_name enemy
-@export var detection_radius = 500.0
+@export var detection_radius = 1000.0
 @export var shooting_distance = 200.0
 var time_remaining
 var on_fire = false
